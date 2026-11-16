@@ -1,0 +1,169 @@
+/* Semantic design tokens. Components use bg-card, text-muted-foreground, etc.,
+   never raw colours, so a theme only has to override the variables below.
+   Names are stable: other apps depend on them. New tokens are additions only.
+
+   Aurora Glass: 18px radius for windows and cards, 12px for controls, accent-tinted shadows,
+   and a per-app tint for every icon tile (--app-*), derived from the theme hue. */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Type scale. Use these with text-caption / text-body / text-title / text-display.
+     Body is 14px at 1.5 line height; captions are 11px and usually uppercase with tracking. */
+  --text-caption: 0.6875rem;
+  --text-caption--line-height: 1rem;
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.5;
+  --text-title: 1.125rem;
+  --text-title--line-height: 1.5rem;
+  --text-display: 2.25rem;
+  --text-display--line-height: 2.5rem;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 10px);
+  /* Aurora Glass radii: windows and cards 18px, controls 12px. */
+  --radius-card: 18px;
+  --radius-control: 12px;
+
+  /* Accent-tinted elevation for primary buttons and selected things. */
+  --shadow-accent: 0 12px 30px -12px color-mix(in oklch, var(--primary) 60%, transparent);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-taskbar: var(--taskbar);
+  --color-titlebar: var(--titlebar);
+  --color-stem: var(--stem);
+  --color-success: var(--success);
+  --color-glass: var(--shell-glass);
+  --color-glass-border: var(--shell-glass-border);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Surfaces: a near-black base with a faint cool tint, so glass and cards read as layers. */
+  --background: oklch(0.1 0.006 265);
+  --foreground: oklch(0.97 0.004 265);
+  --card: oklch(0.16 0.008 265 / 96%);
+  --card-foreground: oklch(0.97 0.004 265);
+  --popover: oklch(0.17 0.008 265);
+  --popover-foreground: oklch(0.97 0.004 265);
+  --primary: oklch(0.82 0.12 170);
+  --primary-foreground: oklch(0.14 0.01 170);
+  --secondary: oklch(0.21 0.008 265);
+  --secondary-foreground: oklch(0.97 0.004 265);
+  --muted: oklch(0.22 0.008 265);
+  --muted-foreground: oklch(0.7 0.012 265);
+  --accent: oklch(0.27 0.01 265);
+  --accent-foreground: oklch(0.97 0.004 265);
+  --destructive: oklch(0.64 0.21 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.82 0.12 170);
+  --taskbar: oklch(0.13 0.006 265 / 96%);
+  --titlebar: oklch(0.19 0.008 265);
+  --stem: oklch(0.12 0.006 265);
+  --success: oklch(0.76 0.16 150);
+
+  /* Elevation. Windows and cards get a 1px bright top edge (--surface-highlight). */
+  --surface-highlight: inset 0 1px 0 oklch(1 0 0 / 14%);
+  --shadow-window: 0 32px 90px -16px oklch(0 0 0 / 66%), 0 0 0 1px oklch(1 0 0 / 7%);
+  --shadow-raised: 0 12px 28px -12px oklch(0 0 0 / 55%);
+  --shadow-card: 0 18px 40px -22px oklch(0 0 0 / 60%), 0 8px 22px -14px color-mix(in oklch, var(--primary) 35%, transparent);
+
+  /* Glass surfaces for the shell, floating bars and modals. */
+  --shell-glass: oklch(0.2 0.01 265 / 44%);
+  --shell-glass-strong: oklch(0.22 0.01 265 / 74%);
+  --shell-glass-border: oklch(1 0 0 / 18%);
+  --shell-glass-highlight: oklch(1 0 0 / 14%);
+  --shell-glass-shadow: 0 10px 32px -12px oklch(0 0 0 / 45%);
+  --shell-radius: 18px;
+  --shell-tab: oklch(1 0 0 / 10%);
+  --shell-tab-hover: oklch(1 0 0 / 6%);
+  --glass-blur: 24px;
+  --glass-saturate: 160%;
+
+  /* App icon tiles. Each app has a hue offset from the theme hue, so all 11 themes stay harmonious.
+     --app-chroma is lowered by the mono theme. --app-ink is the glyph colour on a tile. */
+  --app-chroma: 0.16;
+  --app-ink: oklch(0.99 0 0);
+  --app-stem: oklch(0.76 var(--app-chroma) calc(var(--theme-hue, 170) + 0));
+  --app-downloads: oklch(0.8 var(--app-chroma) calc(var(--theme-hue, 170) + 45));
+  --app-discard: oklch(0.68 var(--app-chroma) calc(var(--theme-hue, 170) + 250));
+  --app-tikitaki: oklch(0.74 var(--app-chroma) calc(var(--theme-hue, 170) + 150));
+  --app-lublox: oklch(0.7 var(--app-chroma) calc(var(--theme-hue, 170) + 200));
+  --app-settings: oklch(0.6 calc(var(--app-chroma) * 0.25) var(--theme-hue, 170));
+  --app-club: oklch(0.8 var(--app-chroma) calc(var(--theme-hue, 170) + 85));
+  --app-larp: oklch(0.66 var(--app-chroma) calc(var(--theme-hue, 170) + 25));
+  --app-pass: oklch(0.72 var(--app-chroma) calc(var(--theme-hue, 170) + 300));
+  --app-music: oklch(0.7 var(--app-chroma) calc(var(--theme-hue, 170) + 330));
+  --app-video: oklch(0.66 var(--app-chroma) calc(var(--theme-hue, 170) + 15));
+  --app-longform: oklch(0.64 var(--app-chroma) calc(var(--theme-hue, 170) + 265));
+  --app-donate: oklch(0.72 var(--app-chroma) calc(var(--theme-hue, 170) + 350));
+  --app-turkey: oklch(0.62 var(--app-chroma) calc(var(--theme-hue, 170) + 60));
+
+  /* Focus: a visible two-layer ring that works on glass and on light themes. */
+  --focus-ring: var(--ring);
+  --focus-ring-halo: oklch(0 0 0 / 55%);
+
+  /* Glass logo and clock. */
+  --logo-glass: oklch(1 0 0 / 18%);
+  --logo-edge: oklch(1 0 0 / 65%);
+  --clock-glass-fill: oklch(0.74 0.12 240 / 42%);
+  --clock-glass-edge: oklch(0.87 0.08 230 / 85%);
+  --clock-glass-highlight: oklch(0.94 0.04 225 / 65%);
+  --clock-glass-shadow: oklch(0.28 0.1 250 / 65%);
+
+  /* Fall wallpaper leaves and steam (Fall theme accents). */
+  --fall-leaf: oklch(0.7 0.17 50);
+  --fall-leaf-alt: oklch(0.78 0.14 85);
+  --fall-feather: oklch(0.43 0.09 45);
+}
+
+/* Base rules read the plain tokens, not the @theme inline aliases, so they resolve in every build mode. */
+@layer base {
+  * { border-color: var(--border); }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { letter-spacing: -0.015em; }
+  button, [role="button"], [role="tab"], [role="switch"] { cursor: pointer; }
+  button:disabled, [aria-disabled="true"] { cursor: not-allowed; }
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--focus-ring-halo);
+  }
+}

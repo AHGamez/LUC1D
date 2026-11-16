@@ -1,0 +1,120 @@
+<!--
+full credit snubby.top
+i just edited it a bit to make it better for gn-math
+-->
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script>(function(){function S(){var d={};return{getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}["localStorage","sessionStorage"].forEach(function(n){try{window[n].length}catch(e){try{Object.defineProperty(window,n,{value:S(),configurable:true})}catch(_){}}});try{indexedDB.open("_luc1d")}catch(e){try{Object.defineProperty(window,"indexedDB",{value:undefined,configurable:true})}catch(_){}}})();</script>
+  <script src="https://55gms.com/assets/js/save-agent.js?v=4"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/55gms/gms-ads@b995962daa60e71ea2ab3bdaf6e10f8c6853a7fe/embed/dist/sdk.min.js"
+    integrity="sha384-TshTwF2bDJgpoZFNenR6Wn1Ldh7BMyNG42LqxG2OTTuBEUk0+Nabn9pIPCWz5AIT"
+    crossorigin="anonymous"
+    data-game-id="slimerancher"
+    data-compat=""
+  ></script>
+    <script src="https://55gms.com/assets/js/loader-ui.js?v=5gz9swuael"></script>
+    <script src="https://55gms.com/assets/js/game-loader.js?v=5gz9swuael" data-title="Slime Rancher"></script>
+    <script src="https://55gms.com/assets/js/script.js?v=28"></script>
+    <base href="https://cdn.jsdelivr.net/gh/web-ports/slime-ranchers@f0c5856ac43cf0cfbab4c58139282fc75f9b1861/">
+    <meta charset="utf-8">
+    <title>Slime Rancher Decompiled v0.2.1</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script src="mobile-controls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="webgl-content">
+        <div class="bg">
+            <img class="bg" src="TemplateData/loading_bg.png"
+                style="width: 100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: absolute;">
+        </div>
+        <div id="gameContainer" style="width: 960px; height: 600px"></div>
+    </div>
+    <script src="TemplateData/responsive.js"></script>
+</body>
+<script>
+    const ogxhr = window.XMLHttpRequest;
+
+    function xhrfunc() {
+        const xhr = new ogxhr();
+        const open = xhr.open;
+        xhr.open = function (method, url, ...rest) {
+            if (url.includes("version.txt")) {
+                return open.call(this, method, "updates/version.txt", ...rest);
+            } else if (url.includes("slime.txt")) {
+                return open.call(this, method, "updates/slime.txt", ...rest);
+            }
+            return open.call(this, method, url, ...rest);
+        };
+        return xhr;
+    }
+    window.XMLHttpRequest = xhrfunc;
+
+    function getParts(file, start, end) {
+        let parts = [];
+        for (let i = start; i <= end; i++) {
+            parts.push(file + ".part" + i);
+        }
+        return parts;
+    }
+
+    function resizeUnityContainer() {
+        var container = document.getElementById("gameContainer");
+        var canvas = container.querySelector("canvas");
+
+        container.style.width = window.innerWidth + "px";
+        container.style.height = window.innerHeight + "px";
+
+        if (canvas) {
+            canvas.style.width = window.innerWidth + "px";
+            canvas.style.height = window.innerHeight + "px";
+        }
+    }
+
+
+    (async () => {
+        GameLoader.expect(57149075);
+
+        const dataUrl = await GameLoader.merge(getParts("Build/slimeBUILDS.data.unityweb", 1, 3));
+
+        const json = {
+            "companyName": "Snubs",
+            "productName": "Slime Rancher Prototype",
+            "dataUrl": dataUrl,
+            "wasmCodeUrl": "slimeBUILDS.wasm.code.unityweb",
+            "wasmFrameworkUrl": "slimeBUILDS.framework.unityweb",
+            "TOTAL_MEMORY": 536870912,
+            "graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+            "webglContextAttributes": {
+                "preserveDrawingBuffer": false
+            },
+            "splashScreenStyle": "Dark"
+        };
+
+        let blob = new Blob([JSON.stringify(json)], {
+            type: "application/json"
+        });
+        let blobUrl = URL.createObjectURL(blob);
+        window.addEventListener("resize", resizeUnityContainer);
+
+        UnityLoader.instantiate("gameContainer", json, {
+            url: blobUrl,
+            Module: {
+                onRuntimeInitialized: function () {
+                    resizeUnityContainer();
+                    GameLoader.finish();
+                },
+            },
+        });
+    })().catch(GameLoader.fail);
+</script>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script>(function(){function S(){var d={};return{getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}["localStorage","sessionStorage"].forEach(function(n){try{window[n].length}catch(e){try{Object.defineProperty(window,n,{value:S(),configurable:true})}catch(_){}}});try{indexedDB.open("_luc1d")}catch(e){try{Object.defineProperty(window,"indexedDB",{value:undefined,configurable:true})}catch(_){}}})();</script><base href="https://gn-math.dev/s/">
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/tty67hlt6jf6/j@main/style/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tty67hlt6jf6/j@main/style/style.css">
+    <script src="https://cdn.jsdelivr.net/gh/tty67hlt6jf6/j@main/UnityLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/tty67hlt6jf6/j@main/UnityProgress.js"></script>
+    <script>
+        var gameInstance = UnityLoader.instantiate("gameContainer", "https://cdn.jsdelivr.net/gh/tty67hlt6jf6/j@main/build.json", {
+            onProgress: UnityProgress,
+            Module: {
+                onRuntimeInitialized: function () {
+                    UnityProgress(gameInstance, "complete")
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="webgl-content">
+        <div id="gameContainer" style="width: 900px; height: 600px;"></div>
+        <div class="footer">
+            <div class="webgl-logo"></div>
+            <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+            <div class="title">journey downhill</div>
+        </div>
+    </div>
+</body>
+
+</html>

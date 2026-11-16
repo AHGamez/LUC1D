@@ -1,0 +1,364 @@
+{
+  "files": {
+    "src/ai-gateway.types.ts": "6ceb37dc6e0b3f71e17d3ea547145f9efa3564fc4d5ca94954d509bd0f029f34",
+    "src/assets/chromium-logo.png.asset.json": "d0d9e03903131dce98e50347652ff3d8bb0866dcec53009d611c8cc78bfea6d1",
+    "src/assets/fancy-center-minecraft.jpg.asset.json": "71fc925876cc56e7c7901bda1b629d67a2377c69165ee012b2d388ed07b6499d",
+    "src/assets/fancy-center-minecraft.mp4.asset.json": "90c2181de503d0b4eba983ac491f19f7ecdf45ce46eef1975a22e758ed786133",
+    "src/assets/fireplace-in-minecraft.jpg.asset.json": "8fd6c30813cd66ee5156ac3376db212c590c370bdf2d2821e5200e713b0f1bc4",
+    "src/assets/fireplace-in-minecraft.mp4.asset.json": "8e277771160ca8066d97dadeabb7ab09410645e430a0e99159a24d473a1d41ac",
+    "src/assets/luc1d-boot.mp3.asset.json": "d6638488cd8a6c29026c84eb16c7611bf75c1d079bde92bb5e6e2e04fca505f4",
+    "src/assets/minecraft-falling-snow.jpg.asset.json": "1eb1d9ff4da3f3a00ff338247ea3acb400e922503fe1298c028472359bd78d27",
+    "src/assets/minecraft-falling-snow.mp4.asset.json": "f45c9a11f110167fa912f42070ed3d5c6b748c25d5fc95a0b7ad2aa04b063580",
+    "src/assets/minecraft-nature.jpg.asset.json": "24ebad0f75c0096f60ea45f8db52447fb0198656085fa09157e2cea455d30a5f",
+    "src/assets/minecraft-nature.mp4.asset.json": "22a217f6208cac429557f00ef0e98900418f2206a7891a5172d55719ca5579f4",
+    "src/assets/minecraft-overgrown-cabin.jpg.asset.json": "e05c65651fca7afdaa8e2036eb913a624527ad2d13ddcb2c7ba1a7e809229a8e",
+    "src/assets/minecraft-overgrown-cabin.mp4.asset.json": "328de2257f2f7d58c8e652bfc98146259abf2c1a44d229eec2d258fe774cfa95",
+    "src/assets/minecraft-snowy-campfire.jpg.asset.json": "922f453ed319d9c48e207418ab55170a92db639bc16cb87ae4415c57184af86e",
+    "src/assets/minecraft-snowy-campfire.mp4.asset.json": "09690229c3b0ffd7b5c97d1a4e57192e63aae6514616831a0c7dd2bfdf6b8b8f",
+    "src/assets/minecraft-sunset-farm.jpg.asset.json": "a62acbadf52876d1f53a848a2dff6898bc8afa3948bc6901ccbebc1b5704556e",
+    "src/assets/minecraft-sunset-farm.mp4.asset.json": "cd3a21d7d03b581d37c3adcdc3f4696fd4058c37cd31820c2ad419020c05ac0d",
+    "src/assets/northern-minecraft.mp4.asset.json": "46a06fc008b72148838ff8212abf94e8423bc1ce5bba6d1bf445cfa517e31d9a",
+    "src/assets/raging-wolf-instrumental.mp3.asset.json": "fd5b2b79a285d7a33cd09f608685eec6cd08ace9f22ca4720fc8b7f3812d7999",
+    "src/assets/snowfall-in-forest.jpg.asset.json": "c4ed1eb3f3f606f6d05cbc254e54df93162e6d9ce9160dc5676c3243b3e68789",
+    "src/assets/snowfall-in-forest.mp4.asset.json": "f728b8b0efc3b361ee93b406003e8f965623d9f61752d4f764486d0a22472766",
+    "src/assets/wood_tap.mp3.asset.json": "39a03ba1e2c01c0c090c6d54488913380f451b8d80110d532e67f6fc4b70a5fb",
+    "src/assets/xmas-gift-audio.mp3.asset.json": "4dc8141bb8c8cb36af7cf0b08d73302e24644a0fed6bf9f8294a11af465a410a",
+    "src/components/Donate.tsx": "b811d41f9bd7206fe9e6f1358fe2398d52d104685c4b49f367584e1ce4a01098",
+    "src/components/advertise.tsx": "1a044b32abeb1be39a0bcc5ae27ba423da7119186baa1f452dec1b986842f932",
+    "src/components/avatar-decoration.tsx": "e51bf9a4df4733198e9fa5d2403cf8240e295309d5bba3839ac6299ecb120ff0",
+    "src/components/battle-pass.tsx": "b587d8b479996ca530de4b7cce3803a80f697a6368e5fe213adc3e80edc3cbf9",
+    "src/components/boot-intro.tsx": "4f95ba4e2029cd92d2f36bb7ed07e3f4aadc1f48b7faba770d86a66fc9db447b",
+    "src/components/chat-images.tsx": "a8c84e56ad7969aac42c9d329461097b1d0ee790a5fdd10050431db9709b75c9",
+    "src/components/club-bird.tsx": "73845672c3d7c9a71d1d1ee0816d83f51b6360c9c3bc4a0fb8794ee2c22a84a1",
+    "src/components/club-trade.tsx": "da056f0951a49b15eaf15aefa9519f468b213ab08946dfc2103bc489fe61a9ef",
+    "src/components/coming-countdown.tsx": "3009a9fab42840a9e44ca7ac7f91ecdb0aa1303d0e1c9a914d4ac3652fbb2e1f",
+    "src/components/desktop-icons.tsx": "9ea1b6fdc6e096cf3af3279a4bbe387ab2fa1e6c44a68258665d31715c028379",
+    "src/components/device-entry.tsx": "1c669e17d9d6adb468fe60ac11e757a3040614690d46bc769063792972f1797f",
+    "src/components/discard-admin.tsx": "b87bf97d70bb66634a9d0e9855ecd467762f107761aecd3520a94e8a283a8a96",
+    "src/components/discard-call.tsx": "d485e4b4611ed137750d1696f4a37c0e610c9b4d90a191dd16288c8d2d9b03e5",
+    "src/components/discard-extras.tsx": "9b1866fcd7d8bba7528d96dd93ce27a1e556f780cdaf4b04d4a9f0fff32ec5e5",
+    "src/components/discard.tsx": "b0365b8d52bd4d8295db6e5819641bf0fa61cd46fa7ce3b94c31338f56917b49",
+    "src/components/fiveplay-catalogue.json": "11549d7310890a6fcda02513f237ef8f078acad913df36c187d34e4659d5ad9a",
+    "src/components/game-catalogue.json": "111997cb58abc0858cc48cb3f24cb2d02634b8c6cc0c0d34d80a796284c9ddbb",
+    "src/components/game-sources.ts": "07346aacc9cbfee55aa5deb2ae13cebb22df8b7ad6598fd080acce7a1a6b8640",
+    "src/components/games.tsx": "ec791f4f659e9b5f1a0a569b9be852c92c0ff9d8fd3774efdd88896117d052a3",
+    "src/components/gif-unlock.tsx": "a04311dd2eb23e6bdf3fcc81d49543209dd577a5a412780d9ac365bf1f04fea0",
+    "src/components/gn-math-catalogue.json": "c8c683a891bf965a932cf2ec44080506901b5077655ea4435e2a15fc56b5149b",
+    "src/components/install-app.tsx": "730dd8e01ab7740bf63e0f777497a377f8557561e062e62b29f4fdb756a12834",
+    "src/components/larp-flex.tsx": "1c7fde2f6fb73c0a2952ce7ee5692fa0e06a5a94fba4434a3a0b0466fc5eac5b",
+    "src/components/longform-app.tsx": "1f8ff7da964e66e899bf70751e39a93014a380d61d3c20d51aa1a0b5c0690fad",
+    "src/components/lounge-afk.tsx": "aa12b8dbf192852eb994c5df9939e3a6c5bf2b2bc745df0f27dd42eb3c12495a",
+    "src/components/lublox/avatar-body.tsx": "b15ba945656b3876bc937707e48b00a29c957b87bc811fc26baeeff2beaa2402",
+    "src/components/lublox/bikelife.tsx": "e324a0dc3b5d4ef8f4d0fa57ba68edfa2fa8e87d3ddc9428f1161a300aa5425a",
+    "src/components/lublox/clothes.tsx": "6d1bdad9ff872e02aca51bea138ddeb52dc24b4201b5922b3fe11ae7747a658b",
+    "src/components/lublox/hat.tsx": "77836993dfaeb8939cf0cfc4d06b6543f3fea7203669fd5dd716eda50a9b2e7e",
+    "src/components/lublox/multiplayer.ts": "04c310c1955326ca3953ba35d764722a76f6b7faad874cf307efa6c4c97e4ac1",
+    "src/components/lublox/player.tsx": "4de9d718ee6a01c5a33cd924ae07e286abde2606c44675ae86f61729e4909e6a",
+    "src/components/lublox/scene.tsx": "b04d1abd715a687749f69e3058dcc136e6926339e7eba3b3bbcbef4dcdb09843",
+    "src/components/lublox/shop.tsx": "71f397b06f5d71ce3e30909d794fe5de8a1ffef84243d14409a50c8a7084901d",
+    "src/components/lublox/studio.tsx": "82461e982e9dd25295e1ac35d1428c25021026c7a9f6fccf91dd8229a2f475bd",
+    "src/components/lublox/weapons.tsx": "53231c940c4374d851df8f4d7ee1d815bb2fd70f8e6858634d86f0fe96ee3515",
+    "src/components/mp3-player.tsx": "e4e7e75e782812166c4be9935be81dd53b029602b322c5fbfa544fd29551227d",
+    "src/components/name-effect.tsx": "13063c0fe5eabbbd0ea663a3c146d3ad0e309df2e0a4952e12675ab0955ea038",
+    "src/components/push-toggle.tsx": "1feb90faf73e621dfdc87e9dcccb0c6749dbf02971d287944cf25f95e39fefab",
+    "src/components/shimeji-settings.tsx": "40f35d23f90ec190a04654a8c4ae4e1e6a4933bea790ffc61d159345bbb7db02",
+    "src/components/shimeji.tsx": "60163486f6db3428a27ef9080cc323d421e80795ea54fbb9433001fc39ad03cb",
+    "src/components/site-announcement.tsx": "b37b5ae4b23763bd5ca866f2190dfe174c0e24317df37a2deb9737057ccaf1e0",
+    "src/components/site-appearance.tsx": "15e1094f1d3733cc84215eca1e5b3989fe79a9965f177453017166feea8a8c2f",
+    "src/components/site-notifications.tsx": "343e5bc10b5c9d5796e52c4334c67b27689b3b77fa8193e118034ec893d15788",
+    "src/components/tikitaki-profile.tsx": "399ad80bbdc0febffa8bdf6e8357383f8a82019ff891a069f01a3b8fb92ecfd1",
+    "src/components/tikitaki-social.tsx": "8a79aaaae4532bc9dfccc95461172557f68de7ee61588ab0c82762977ecb1919",
+    "src/components/tikitaki.tsx": "506ad4cca5a175a229b572bf8184040ac35d80392561688ed5ccb57db997f3a6",
+    "src/components/turkey-hunt.tsx": "3c79bf35ae7541777dd3858ae4609b2603a078c46479cd78fa064bd5dcf5c08d",
+    "src/components/ui/accordion.tsx": "0903efcd7b746eef0a10c954a541b0dfa7aa1172f3c380a1a88f4e19a317fda3",
+    "src/components/ui/alert-dialog.tsx": "ee4d7f3341a1e5592787b7dac8e924bd226189492819f6704d8a7faf8fe64d20",
+    "src/components/ui/alert.tsx": "e7f4c2e6f78c59270905b4152b7d3ef4d5c6b9e3b2d370daa7b301aa7cbd27b3",
+    "src/components/ui/aspect-ratio.tsx": "d72c73d629e37995a0a71647d851d68d6fdcd7ec120797f36ab83a8ee89f2cab",
+    "src/components/ui/avatar.tsx": "0326c9041c5a0b1ba31ff29822c51950b6aeac485cd0985e7df714741a54e7f4",
+    "src/components/ui/badge.tsx": "6519775252fe729f21c60b92c7c9feefd1fe7d0a8c2cf16d6f1c2fa7e153fe75",
+    "src/components/ui/breadcrumb.tsx": "d5224e87344b3ac0f8b002e5dda6a71ff8fee296db8a5fbe6b034d06bd5c2ae1",
+    "src/components/ui/button.tsx": "e39813b666ba434660ec088356a0349246b6803a4e99961295d0c82bab1ab862",
+    "src/components/ui/calendar.tsx": "e883f2245873fdf360764f77fc8f391426bef5776c6397537012c46970ebd6ee",
+    "src/components/ui/card.tsx": "f13878a0078a5ef9f3e92af29259fc1e93ea56ea80cb992e0c4dea4e35396459",
+    "src/components/ui/carousel.tsx": "568e00e8edbfab8af67ee902ca9ef5ceb6d5ed6f3045e7f9b3c15b4f7ef9e974",
+    "src/components/ui/chart.tsx": "81b1f692f9334ba3030213ff37eeaf2dd762b644e5d96e51ada7072109f07430",
+    "src/components/ui/checkbox.tsx": "c44d02535d5c9c92807576804407dd63d01e7189dbde526e925b53885e645fd4",
+    "src/components/ui/collapsible.tsx": "5f0a45d8f6ca72d37ed10bf0a85306158b67d7cbc386319186ce013ead9bc0a6",
+    "src/components/ui/command.tsx": "ba8c0f8b23044ce9a5066e66d7ab7be3a3c79bfc4a0ab7dfae6ffafe439145a3",
+    "src/components/ui/context-menu.tsx": "b299f50a0a7840b136db5670f2b2e7eec6fc62b3c06bc2ad0015800959cc381b",
+    "src/components/ui/dialog.tsx": "e3a6de153fb15597ea95be9c4549211a297c060267787915599e3d680d476bd9",
+    "src/components/ui/drawer.tsx": "478c487f66245641d5fa0f0d1c53a07d68bd60c4b3c497ec4c41ce08b482e14b",
+    "src/components/ui/dropdown-menu.tsx": "a6b87c89f5a806225b7f3a81f13a6577289c67e5787c2a56b5a22bd1edea02ce",
+    "src/components/ui/form.tsx": "1ed53d4ab564a64708938643de590f2bef3718b0b2a309c1019c57e9c1fde23f",
+    "src/components/ui/hover-card.tsx": "69dc172ece56ac77bf3a044a1cd60ed601b0041945d16b5da4c6cc4f42116988",
+    "src/components/ui/input-otp.tsx": "45b7c4fd518616f76dd611b9da13bc60bece1352e050878bf943e1cc6a4ed678",
+    "src/components/ui/input.tsx": "92debb7d6d2d96d9e607a42d5ce8f37b2d63384ae5dd9ffbbf5f047b680ffb85",
+    "src/components/ui/label.tsx": "9f72e2ecf16206593aa9e3c4fbc14cd8e81aa8488d57d92d4a950b30935a9fa9",
+    "src/components/ui/menubar.tsx": "5bd157c3a446ea1e451867e63724b2e87ad6bba6251c8b5f1b267d1df7bd4e0e",
+    "src/components/ui/navigation-menu.tsx": "755aecc77b7911ab61159c9fbb9b25254009eb4c32c95b1430b6b5b7d37ed8f0",
+    "src/components/ui/pagination.tsx": "cbe8559c578ee2d34c7daef5ee75dc3afeb795851e294b111dec375ba44a9a2d",
+    "src/components/ui/popover.tsx": "861c18577ea5988c6f5ca00d1c677200319fd427cf8b424e59a5cca6ff24f830",
+    "src/components/ui/progress.tsx": "418f612946a520d1380b7a0d058185bb6a6d09846846dd6d6904a0016152dd4a",
+    "src/components/ui/radio-group.tsx": "8c55aa0496b00a27fc4f609ca8b43a7e82c6802f6bf613998438b7632899fa96",
+    "src/components/ui/resizable.tsx": "f0399fec7bc334f06433b41b6ebf34255942ce4916b99173898893fa7fcc8281",
+    "src/components/ui/scroll-area.tsx": "b607f562455152a079d70a22538c95072b0267e0d59a1a1cf16a905a2e373a6f",
+    "src/components/ui/select.tsx": "6d4deee18cf7ced0354eb719300833a83caf46400de6ee9c3d1942fa4c579ad4",
+    "src/components/ui/separator.tsx": "bf5838b692e5f74fde7083280b99492dd402bce6966e912e79f5e23f14bc98eb",
+    "src/components/ui/sheet.tsx": "a82f9341962e766ee925a2fe883b0a9ab5d5dd8475c402ac8e491ee37dc95fde",
+    "src/components/ui/sidebar.tsx": "9f44f4523271f965adec608ae1c3b8a2f350f2f45ba1401a2c7ee33bc5eda238",
+    "src/components/ui/skeleton.tsx": "f4c42257d73925b0b856a3500e2cbdd918fe6744fcd6be87ef28bb88e7eb7366",
+    "src/components/ui/slider.tsx": "d307cf3ff05b54be4a04389ef4379f9e8b4dc49720197937991ce843a8d4b5ec",
+    "src/components/ui/sonner.tsx": "3ad40f66c339e799b1a57c00e10b4627294c7d580d99d8a48ae0d8d4c13cf931",
+    "src/components/ui/switch.tsx": "c3c298df4ffb56695e4a8f0ff3e37eee08437dec542a677153ec16bed0820107",
+    "src/components/ui/table.tsx": "1e945e564c2cc5ca3ef33019ba7da7a8b94cbc73feb3cbc2b7b33c36ea648d92",
+    "src/components/ui/tabs.tsx": "e9b454d2f987c83b36cc8870bba47d9355db4e8f5c733b310dbc1119a7d27654",
+    "src/components/ui/textarea.tsx": "35617a2cf053e52c9e56983bde82d556861d38e462f9e578876c8e99a0432687",
+    "src/components/ui/toggle-group.tsx": "d59cd3937c967a3e221fdfcfe4ea5cd57eb97cbe37e1ac98126664c9c7db49c1",
+    "src/components/ui/toggle.tsx": "62e6e21993f1ab633b9f830cbbf0c181f3d161bae3a7792dbf2d842d42a2f09c",
+    "src/components/ui/tooltip.tsx": "9682690fc3755d0f4b8684f2d7b1f77945876d41a45b723d0761b26804ad5010",
+    "src/components/update-log.tsx": "04678cf2e976d19106003b0e930b148882f3752c85f457f5f192ea9a613cea68",
+    "src/components/video-editor.tsx": "713e523032a87c6f831739c88096e799b8a1fedf8257c4c4af8c6ed1f206b527",
+    "src/components/xmas-gift.tsx": "2b4532746ed1ef80f479ff45042c229a41041a61246afc1dcf498f4ee35221fd",
+    "src/hooks/use-mobile.tsx": "21eff740f9e5c965c7f0782925a7e8f67ddfcdf0f58b6613550f99c3e1c454e9",
+    "src/lib/account-admin.functions.ts": "ca60d429de5d441c9337d4ff0a72c6231f0de5714f414d0437d58beaa0ed7d20",
+    "src/lib/bikelife.test.ts": "04259c53a3f3630d325e86a61e27c8b2d898187b2002d8f8dc72e75ad5af13eb",
+    "src/lib/bikelife.ts": "017cd4e331f399a648522836b37628a80021188f7af852aec38f4e9ae49f3bf9",
+    "src/lib/chat-image.ts": "8c5a64f0abf5970a42fcb837d7367855c6b43c532b3de27268576bb186aee90d",
+    "src/lib/chat-mentions.ts": "1a67877f898f123f9de5196dc05aa6ec28b6469363ad96cc78febcf705795457",
+    "src/lib/club-items.ts": "f3408f39ac8005ed03168ccf7fbdfb57dd7f4ec6ab1c146127a56df282e4b4e6",
+    "src/lib/desktop-grid.test.ts": "d836250aa3aca85fa4bb5c9a145ec3bdca372d04d54766a9d18ec2f41a3330b1",
+    "src/lib/desktop-grid.ts": "8df49393f90b5256289120f33be6f4995582f6a2acb7407cf29bf530cd6ebd1f",
+    "src/lib/discard-presence.tsx": "2d94ceb11bb365214717a3cdc49fa2fee72a2f4eb315f02346a79a4e8083db1c",
+    "src/lib/discard-profile.ts": "0bca2aefa24ef6f84fa07c608326c218c1bcd382ae4d3c2346828c5ddf5b8eb9",
+    "src/lib/error-capture.ts": "d6fa7756cbc4c399f4e891b174c2dce8160e2354972c2ae68413dfd1db843088",
+    "src/lib/error-page.ts": "635915886f5d44a18b6add2a53959dbe2e8ba1bb3f7e597fc714650e74157bb6",
+    "src/lib/fall-event.ts": "40ec6d554e5225da1b75404a1924454f0bcf607b2567bbe90df8d290e823f32e",
+    "src/lib/larp-judge.server.ts": "2f7b8adaf555a8307196b86c9a2f886ab40a7ffde26f2295aa7a3ba9292fea73",
+    "src/lib/lounge-afk.test.ts": "e5b21716a44f4de6cb30bf1fa846ea1754b7fe14a1b46e751fb37dba3885e957",
+    "src/lib/lounge-afk.ts": "203e2f21c361f24e24ba211b300aa2c1c31cc4da9edccbe10f55c8902af0cb64",
+    "src/lib/lovable-error-reporting.ts": "0a2e8b5f3ffd2dd682ab78be1a9b0998b73284a6525080e4960f85827cd608d3",
+    "src/lib/lublox-garage.ts": "b42c524ce21b5caafce41de4ea1077bd8682cc408f9448a8b6f59a2f1b1b3e31",
+    "src/lib/lublox-import.test.ts": "f8443fa9f8d60ea6c0f4cdd6d4f0bba3066e0742b37a09b30776d377d4a6e4dd",
+    "src/lib/lublox-import.ts": "8c5d50b094f42110d944aede8d382d4f2a6b4510f74acdb4d651ff70e44d6212",
+    "src/lib/lublox-import.worker.ts": "f57b2c762e76454e9805d8b6ed4f0509e9e1f0aaefe26a2e2289b86a7ab2f8f5",
+    "src/lib/lublox-plots.ts": "ac40641e3a8c96df8fb4a3ac414c5ccfca2ea2af834912c68f498a69d73af2a8",
+    "src/lib/lublox-sound.ts": "16dc2705aad976a941591f80967a7773d7aa680354fd3694a73150d02b1c80b5",
+    "src/lib/lublox-tag.test.ts": "5d3788a36ada1da21b8ed616ac2be004bebf2623965f7e6aff439cac643c666f",
+    "src/lib/lublox-tag.ts": "57d3a42944a48ae4bf8c19df9e8db039b707dae51fdeb1f5bd596d024ae3762a",
+    "src/lib/lublox-vehicle.ts": "102ad225816630bec69ee3a446e480abc0f4bc3f918b8a29bfb0266daf9e2144",
+    "src/lib/lublox-xmas.test.ts": "6a1c54f69c83fe35a3ed081a325129ea8ed4023be3f2790cade1b2799a4c7f0b",
+    "src/lib/lublox-xmas.ts": "59225d0c11312e5451661b45b9bf575ebedc7d78fdb29fe3d939812c24fec626",
+    "src/lib/lublox.test.ts": "6c466813f7868a65e236f91f01720d803df403d8e9e51f2dc831c55441435a0e",
+    "src/lib/lublox.ts": "33888c2d302ff7cb96e8e82c31da4c04e22413679c0b6c8831fdef11310b9066",
+    "src/lib/push-config.ts": "8969c95ec40e5742920ea3de95aa4a8e9d5c6ee2e99465926ef1f2f9905e4479",
+    "src/lib/push.functions.ts": "01b8ca27ad313d2292a3ac7887cbe1b41d8d4632f2a167ab225ec98b23133fd8",
+    "src/lib/site-sounds.ts": "289346098909b31f15df2806491e73c2ad96bce927c01241ddbd48695f2e459d",
+    "src/lib/site-themes.ts": "cc60cf8e6adf79b3df58ae805ee643473c5a0e5b620bc776331ff4db2264ccae",
+    "src/lib/stripe.server.ts": "d31d445f35b0474da657b28963f989084978e4b55921416235af02abdea8b15c",
+    "src/lib/stripe.ts": "5026e20f20a5603cbfd2c8c15110d7f6af3b5b0f5137d7d816055b7c512dd776",
+    "src/lib/tab-cloaks.ts": "e693b7feb3fe7d41cc0d6adc20f822a1c29397f9f2eb92c5d3883bbc64562843",
+    "src/lib/utils.ts": "d1f1e0d62cb8d8d1e04c26e14de842d8a151f75812d81b046c65b5d1fe8e4b27",
+    "src/lib/vendor/lz4js.d.ts": "d864b985508192e8d4359aad6d9bf1eb0a353fbf24eb195b71acf98d1963941d",
+    "src/lib/vendor/roblox-binary.d.ts": "ae0e06fc414398e683348601392fec4a3deaf812d25eed2c77bf7ecf4e0028bf",
+    "src/lib/video-backgrounds.ts": "dac163ff1d4b909ddd55d020b32bf1b2c003108566d575a2ae7880e57a73744d",
+    "src/lib/xmas-access.ts": "9d1e12c97bb8bbac898878b5e9c0dcbb434ac672c62bcd10b64a867c4959cfb1",
+    "src/router.tsx": "72b68964d3f55ba4f7dcf2a04aad9d97d7c61fabad13aec1d298f1e39ee59fcc",
+    "src/routes/__root.tsx": "cbbfde19ba23ed774b03574eee7d1c7de827f497cfd4335deceb456214b138b5",
+    "src/routes/_authenticated/desktop.tsx": "13cc932cb097ae28fe26702ed5db3ba9425e7f619213778dde9f92eb1a0c3691",
+    "src/routes/_authenticated/route.tsx": "e1b0934caf57672820e831accccdc70a92ee672caa83f80569e3f73c2553319c",
+    "src/routes/auth.tsx": "fe314dd2ed5073ff58b1969411a9e252a89e81f1da4e87cf878ecb3e83ff763d",
+    "src/routes/gn-play/$.ts": "af2986bf6b0848036e3742c3bf401d3ae92309cd3cf1509c50ce4e49b15205a8",
+    "src/routes/index.tsx": "3ef9406871b1c266c41b6f4d0d4bc92cc6971a78879db88536dbf4d5f92153b3",
+    "src/routes/reset-password.tsx": "479189ca469658fe9da03b92e23be09c6775fab1d67878c476974c5e0f9c7c2c",
+    "src/server.ts": "f0ee683067afee145f81a63a3af76b3d3767e2a1f61f0e82582f8da184ad3ef6",
+    "src/start.ts": "f3f07f1f6afe27708dd41bb992e3c7c470892d44a75c32eebe57abb6327ff28f",
+    "src/styles.css": "f1c123537691eabb40d899d8a17d3a9d0f8bcd598fd720bca517d56f344c7aed",
+    "src/utils/ads.functions.ts": "ac07662edaef98650f8ce95c3121d74abfcf28de78e66a5bdb41bcb50793664f",
+    "src/utils/donations.functions.ts": "19a6744e4368934868a58ba17d3772448abc8ac8da2421080cb547d298be58f2",
+    "src/utils/larp.functions.ts": "e647fa1b97d2b9f81cc4d55318e128d524c681c274ba31024ebd0dc751e49208",
+    "src/utils/lublox-ai.functions.ts": "3752acee3b9aacc2732dd0c69a5d2b84373239024e85726955cc3ee7ef48783c"
+  },
+  "entries": [
+    {
+      "id": "185ac35f",
+      "date": "2026-11-16T18:28:47.215Z",
+      "title": "Latest update",
+      "notes": [
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated.",
+        "App improvements and fixes.",
+        "Discard chat and profiles updated."
+      ]
+    },
+    {
+      "id": "8ca132d9",
+      "date": "2026-11-15T13:27:47.769Z",
+      "title": "Latest update",
+      "notes": [
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated.",
+        "App improvements and fixes.",
+        "Discard chat and profiles updated."
+      ]
+    },
+    {
+      "id": "f5ad0abe",
+      "date": "2026-11-14T18:05:34.099Z",
+      "title": "Latest update",
+      "notes": [
+        "App improvements and fixes.",
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated.",
+        "Discard chat and profiles updated.",
+        "Stem and game library updated."
+      ]
+    },
+    {
+      "id": "0ebd5fe9",
+      "date": "2026-11-13T21:52:15.889Z",
+      "title": "Latest update",
+      "notes": [
+        "App improvements and fixes.",
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated.",
+        "Discard chat and profiles updated."
+      ]
+    },
+    {
+      "id": "2b8872c9",
+      "date": "2026-11-12T21:41:10.370Z",
+      "title": "Latest update",
+      "notes": [
+        "Desktop appearance and customization updated.",
+        "Discard chat and profiles updated.",
+        "App improvements and fixes."
+      ]
+    },
+    {
+      "id": "eec3b16c",
+      "date": "2026-11-11T19:31:24.330Z",
+      "title": "Latest update",
+      "notes": [
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated.",
+        "App improvements and fixes.",
+        "Discard chat and profiles updated."
+      ]
+    },
+    {
+      "id": "753c0339",
+      "date": "2026-11-10T21:49:00.920Z",
+      "title": "Latest update",
+      "notes": [
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated.",
+        "App improvements and fixes."
+      ]
+    },
+    {
+      "id": "1fadafcc",
+      "date": "2026-11-06T16:55:42.523Z",
+      "title": "Latest update",
+      "notes": [
+        "Desktop appearance and customization updated."
+      ]
+    },
+    {
+      "id": "bf2db53f",
+      "date": "2026-11-05T21:39:31.565Z",
+      "title": "Latest update",
+      "notes": [
+        "Discard chat and profiles updated.",
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated.",
+        "App improvements and fixes."
+      ]
+    },
+    {
+      "id": "8f33db65",
+      "date": "2026-11-04T21:39:30.116Z",
+      "title": "Latest update",
+      "notes": [
+        "Discard chat and profiles updated.",
+        "App improvements and fixes.",
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated."
+      ]
+    },
+    {
+      "id": "da9b4e4a",
+      "date": "2026-11-03T16:48:26.888Z",
+      "title": "Latest update",
+      "notes": [
+        "Discard chat and profiles updated.",
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated."
+      ]
+    },
+    {
+      "id": "ffe34da3",
+      "date": "2026-11-02T22:09:34.771Z",
+      "title": "Latest update",
+      "notes": [
+        "Discard chat and profiles updated.",
+        "Desktop appearance and customization updated.",
+        "App improvements and fixes.",
+        "Account and app experience updated."
+      ]
+    },
+    {
+      "id": "39bcdfd4",
+      "date": "2026-11-01T14:55:09.601Z",
+      "title": "Latest update",
+      "notes": [
+        "Discard chat and profiles updated.",
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated.",
+        "App improvements and fixes."
+      ]
+    },
+    {
+      "id": "58df827f",
+      "date": "2026-10-31T03:05:29.135Z",
+      "title": "Latest update",
+      "notes": [
+        "Account and app experience updated.",
+        "App improvements and fixes."
+      ]
+    },
+    {
+      "id": "fd5a5a0a",
+      "date": "2026-10-30T15:35:35.786Z",
+      "title": "Latest update",
+      "notes": [
+        "Discard chat and profiles updated.",
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated."
+      ]
+    },
+    {
+      "id": "ea434310",
+      "date": "2026-10-29T02:10:37.010Z",
+      "title": "Latest update",
+      "notes": [
+        "Stem and game library updated.",
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated."
+      ]
+    },
+    {
+      "id": "2f0335f9",
+      "date": "2026-10-28T22:41:40.327Z",
+      "title": "Latest update",
+      "notes": [
+        "Picture attachments in Discard chats and private DMs.",
+        "Animated Galaxy, Aurora and Stardust avatar decorations.",
+        "Update log now on Home.",
+        "Discard chat and profiles updated.",
+        "Stem and game library updated.",
+        "Desktop appearance and customization updated.",
+        "Account and app experience updated."
+      ]
+    }
+  ]
+}

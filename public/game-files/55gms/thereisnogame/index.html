@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head><script>(function(){function S(){var d={};return{getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}["localStorage","sessionStorage"].forEach(function(n){try{window[n].length}catch(e){try{Object.defineProperty(window,n,{value:S(),configurable:true})}catch(_){}}});try{indexedDB.open("_luc1d")}catch(e){try{Object.defineProperty(window,"indexedDB",{value:undefined,configurable:true})}catch(_){}}})();</script>
+  <script src="https://55gms.com/assets/js/save-agent.js?v=4"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/55gms/gms-ads@b995962daa60e71ea2ab3bdaf6e10f8c6853a7fe/embed/dist/sdk.min.js"
+    integrity="sha384-TshTwF2bDJgpoZFNenR6Wn1Ldh7BMyNG42LqxG2OTTuBEUk0+Nabn9pIPCWz5AIT"
+    crossorigin="anonymous"
+    data-game-id="thereisnogame"
+    data-compat=""
+  ></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>There Is No Game</title>
+  <script src="https://55gms.com/assets/js/script.js?v=28"></script>
+  <base href="https://cdn.jsdelivr.net/gh/55gms/assets@e6dafba78d77deea9bf03d88e4d94efec394ef58/misc/thereisnogame/">
+  <!-- Allow fullscreen mode on iOS devices. (These are Apple specific meta tags.) -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="HandheldFriendly" content="true" />
+  <link rel="icon" href="logo.png" />
+
+  <!-- All margins and padding must be zero for the canvas to fill the screen. -->
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body {
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+      touch-action-delay: none;
+      touch-action: none;
+      -ms-touch-action: none;
+    }
+
+    canvas {
+      touch-action-delay: none;
+      touch-action: none;
+      -ms-touch-action: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="c2canvasdiv">
+    <canvas id="c2canvas" width="320" height="180">
+      Your browser does not appear to support HTML5. Try upgrading your
+      browser to the latest version.
+      <a href="http://www.whatbrowser.org">What is a browser?</a> <br /><br />
+      <a href="http://www.mozilla.com/firefox/">Mozilla Firefox</a><br />
+      <a href="http://www.google.com/chrome/">Google Chrome</a><br />
+      <a href="http://www.apple.com/safari/download/">Apple Safari</a><br />
+    </canvas>
+  </div>
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/c2runtime.js"></script>
+  <script src="js/c2webappstart.js"></script>
+</body>
+
+</html>

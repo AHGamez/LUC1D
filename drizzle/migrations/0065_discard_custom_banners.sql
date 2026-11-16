@@ -1,0 +1,3 @@
+ALTER TABLE public.discard_profiles ADD COLUMN IF NOT EXISTS banner_path text;
+ALTER TABLE public.discard_profiles ADD CONSTRAINT discard_banner_own_path CHECK (banner_path IS NULL OR (split_part(banner_path, '/', 1) = user_id::text AND banner_path ~ '\.(png|jpg|jpeg|webp|gif)$'));
+COMMENT ON COLUMN public.discard_profiles.banner_path IS 'Optional custom banner in private discard-avatars storage; overrides the preset banner.';

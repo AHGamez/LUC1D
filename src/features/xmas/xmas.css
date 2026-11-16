@@ -1,0 +1,86 @@
+/* Christmas: snowy profile rings (Battle Pass), the gift box and the XMAS-26 tag aura.
+   Everything is scoped under xmas- prefixes and carries its own keyframes, so it does not depend on other styles. */
+
+@property --xmas-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+
+.xmas-ring {
+  --xmas-main: oklch(0.92 0.05 230);
+  --xmas-cane-red: oklch(0.58 0.22 25);
+  --xmas-cane-light: oklch(0.97 0.01 90);
+  --xmas-holly: oklch(0.55 0.15 150);
+  position: absolute;
+  inset: -17%;
+  width: 134%;
+  height: 134%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Snowfall: a dotted orbit, flakes falling inside the ring and a snow cap on the top. */
+.xmas-ring-dots { stroke: var(--xmas-main); stroke-width: 3; animation: xmas-ring-orbit 18s linear infinite; transform-origin: 50% 50%; }
+.xmas-ring-halo { stroke: var(--xmas-main); stroke-width: 3; opacity: 0.25; }
+.xmas-ring-flake { fill: var(--xmas-cane-light); opacity: 0.9; filter: drop-shadow(0 0 1px var(--xmas-main)); animation: xmas-ring-fall 3s linear infinite; }
+.xmas-ring-cap { stroke: var(--xmas-cane-light); stroke-width: 5; stroke-linecap: round; fill: none; }
+
+/* Candy cane: a red and white striped orbit with a holly sparkle. */
+.xmas-ring-cane-light { stroke: var(--xmas-cane-light); stroke-width: 6; fill: none; }
+.xmas-ring-cane-red { stroke: var(--xmas-cane-red); stroke-width: 6; stroke-dasharray: 8 8; fill: none; }
+.xmas-ring-cane-orbit { transform-origin: 50% 50%; animation: xmas-ring-orbit 12s linear infinite; }
+.xmas-ring-holly { fill: var(--xmas-holly); }
+.xmas-ring-berry { fill: var(--xmas-cane-red); }
+.xmas-ring-sparkle { animation: xmas-ring-twinkle 3s ease-in-out infinite; transform-origin: center; }
+
+@keyframes xmas-ring-orbit { to { transform: rotate(360deg); } }
+@keyframes xmas-ring-fall { from { transform: translate(0, 4px); } to { transform: translate(4px, 96px); } }
+@keyframes xmas-ring-twinkle { 0%, 100% { opacity: 0.4; transform: scale(0.94); } 50% { opacity: 1; transform: scale(1); } }
+
+/* Gift box (XmasGift): wobble on load, pop when the reward appears. */
+.xmas-giftbox { animation: xmas-wobble 0.5s ease-in-out; transition: transform 0.2s; cursor: pointer; }
+.xmas-giftburst { animation: xmas-pop 0.5s ease-out; }
+@keyframes xmas-wobble { 0%, 100% { rotate: 0deg; } 25% { rotate: -12deg; } 75% { rotate: 12deg; } }
+@keyframes xmas-pop { from { transform: scale(0.2); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* XMAS-26 chat tag: a red and green spinning border around the label. */
+.xmas-aura {
+  position: relative;
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 9999px;
+  isolation: isolate;
+  background: conic-gradient(from var(--xmas-angle), #7f1d1d, #ef4444, #fecaca, #15803d, #4ade80, #dcfce7, #b91c1c, #7f1d1d);
+  animation: xmas-aura-spin 1.8s linear infinite;
+  box-shadow: 0 0 6px #ef4444, 0 0 10px #22c55e;
+}
+.xmas-aura::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  border-radius: 9999px;
+  filter: blur(4px);
+  background: conic-gradient(from var(--xmas-angle), transparent, #ef4444, transparent 33%, #22c55e, transparent 66%, #ef4444, transparent);
+  animation: xmas-aura-spin 1.2s linear infinite reverse;
+}
+.xmas-aura-inner {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0 6px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.5;
+  background: var(--background);
+  color: #fca5a5;
+}
+@keyframes xmas-aura-spin { to { --xmas-angle: 360deg; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .xmas-ring-dots,
+  .xmas-ring-flake,
+  .xmas-ring-cane-orbit,
+  .xmas-ring-sparkle,
+  .xmas-giftbox,
+  .xmas-giftburst,
+  .xmas-aura,
+  .xmas-aura::before { animation: none; }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script>(function(){function S(){var d={};return{getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}["localStorage","sessionStorage"].forEach(function(n){try{window[n].length}catch(e){try{Object.defineProperty(window,n,{value:S(),configurable:true})}catch(_){}}});try{indexedDB.open("_luc1d")}catch(e){try{Object.defineProperty(window,"indexedDB",{value:undefined,configurable:true})}catch(_){}}})();</script>
+    <base href="https://cdn.jsdelivr.net/gh/67-Factory/web-ports@main/idkwhatthisis/">
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon"             type="image/png" sizes="192x192" href="./icons/icons-192.png" />
+    <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="./icons/icons-192.png" />
+    <link rel="icon"             type="image/png" sizes="512x512" href="./icons/icons-512.png" />
+    <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="./icons/icons-512.png" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+
+
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background-color: #000000;
+      }
+	  .imagething {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+}
+#phaser-game {
+  position: relative;
+  z-index: 1;
+}
+    </style>
+
+    <noscript>Please enable javascript to continue using this application.</noscript>
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+    console.log('script running');
+    const interval = setInterval(function () {
+      const canvas = document.querySelector('#phaser-game canvas');
+      if (canvas) {
+        clearInterval(interval);
+        const img = document.querySelector('.imagething');
+        img.style.opacity = '0';
+        setTimeout(function () {
+          img.remove();
+        }, 500);
+      }
+    }, 100);
+  });
+</script>
+    <script defer src="vendors.862890c96fb2f6cc421a.bundle.js"></script>
+    <script defer src="main.364c22b224c8899d4d20.bundle.js"></script>
+  </head>
+
+  <body>
+	<img class="imagething" src="./loadingscreen.png" alt="Loading..." />
+    <div id="phaser-game"></div>
+  </body>
+</html>

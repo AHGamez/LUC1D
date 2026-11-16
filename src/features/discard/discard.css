@@ -1,0 +1,585 @@
+/*
+ * Discard "Aurora Glass" look.
+ *
+ * Every surface is derived from the per-browser look variables (--dc-bg, --dc-panel, --dc-accent, --dc-text),
+ * so the Appearance settings keep working. Only Discard's own root element defines these tokens.
+ * Unlayered on purpose: these classes must beat the Tailwind utilities that the shared Button and kit add.
+ */
+
+.discard-root {
+  --d-on-accent: #fff;
+  --d-online: oklch(0.74 0.17 152);
+  --d-offline: oklch(0.62 0.02 270);
+
+  --d-surface: color-mix(in srgb, var(--dc-panel) 76%, transparent);
+  --d-card: color-mix(in srgb, var(--dc-panel) 82%, transparent);
+  --d-well: color-mix(in srgb, var(--dc-panel) 58%, var(--dc-bg));
+  --d-rail: color-mix(in srgb, var(--dc-bg) 70%, var(--dc-panel));
+
+  --d-line: color-mix(in srgb, var(--dc-text) 9%, transparent);
+  --d-line-strong: color-mix(in srgb, var(--dc-text) 16%, transparent);
+  --d-highlight: color-mix(in srgb, var(--dc-text) 14%, transparent);
+
+  --d-text-muted: color-mix(in srgb, var(--dc-text) 68%, transparent);
+  --d-text-faint: color-mix(in srgb, var(--dc-text) 46%, transparent);
+  --d-hover: color-mix(in srgb, var(--dc-text) 6%, transparent);
+  --d-active: color-mix(in srgb, var(--dc-text) 11%, transparent);
+
+  --d-accent-soft: color-mix(in srgb, var(--dc-accent) 16%, transparent);
+  --d-accent-line: color-mix(in srgb, var(--dc-accent) 48%, transparent);
+  --d-accent-glow: color-mix(in srgb, var(--dc-accent) 45%, transparent);
+  --d-accent-grad: linear-gradient(135deg, var(--dc-accent), color-mix(in srgb, var(--dc-accent) 70%, var(--dc-bg)));
+  --d-avatar: linear-gradient(135deg, var(--dc-accent), color-mix(in srgb, var(--dc-accent) 45%, var(--dc-bg)));
+
+  --d-shadow: 0 16px 36px -18px color-mix(in srgb, var(--dc-accent) 40%, transparent), 0 2px 6px -2px rgb(0 0 0 / 0.3);
+
+  background: color-mix(in srgb, var(--dc-bg) 92%, transparent);
+  border-radius: var(--shell-radius, 18px);
+  overflow: hidden;
+}
+
+/* Frosted bars and side panels */
+.d-surface {
+  background: var(--d-surface);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  box-shadow: inset 0 1px 0 var(--d-highlight);
+}
+
+.d-header {
+  display: flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0 1rem;
+  border-bottom: 1px solid var(--d-line);
+  background: var(--d-surface);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  box-shadow: inset 0 1px 0 var(--d-highlight);
+  flex-shrink: 0;
+}
+
+.d-label {
+  padding: 1rem 0.625rem 0.375rem;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--d-text-faint);
+}
+
+/* Soft pill rows: channels, friends, members */
+.d-row {
+  display: flex;
+  min-width: 0;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: 12px;
+  text-align: left;
+  color: var(--d-text-muted);
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+}
+.d-row:hover {
+  background: var(--d-hover);
+  color: var(--dc-text);
+}
+.d-row[aria-current="true"],
+.d-row[data-active="true"] {
+  background: var(--d-active);
+  color: var(--dc-text);
+  box-shadow: inset 0 1px 0 var(--d-highlight);
+}
+
+/* Square icon buttons in headers and rows */
+.d-icon-btn {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 10px;
+  color: var(--d-text-muted);
+  transition: background-color 150ms ease, color 150ms ease;
+}
+.d-icon-btn:hover {
+  background: var(--d-hover);
+  color: var(--dc-text);
+}
+
+/* Glass input wells */
+.d-field {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--d-line-strong);
+  border-radius: 12px;
+  background: var(--d-well);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.d-field:focus-within {
+  border-color: var(--d-accent-line);
+  box-shadow: 0 0 0 3px var(--d-accent-soft);
+}
+
+/* Cards: polls, admin rows, server results, settings tiles */
+.d-card {
+  border: 1px solid var(--d-line);
+  border-radius: 14px;
+  background: var(--d-card);
+  box-shadow: inset 0 1px 0 var(--d-highlight), var(--d-shadow);
+}
+
+.d-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1px 7px;
+  border: 1px solid var(--d-line-strong);
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--d-text-muted);
+}
+.d-chip-accent {
+  border-color: var(--d-accent-line);
+  background: var(--d-accent-soft);
+  color: var(--dc-accent);
+}
+
+/* Buttons. Primary uses the accent gradient with a soft glow. */
+.d-btn {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.3125rem 0.75rem;
+  border: 1px solid var(--d-line-strong);
+  border-radius: 12px;
+  background: var(--d-well);
+  color: var(--dc-text);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  transition: background-color 150ms ease, border-color 150ms ease, filter 150ms ease;
+}
+.d-btn:hover {
+  background: var(--d-active);
+  border-color: var(--d-line-strong);
+}
+.d-btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.d-btn-primary {
+  border-color: transparent;
+  background: var(--d-accent-grad);
+  color: var(--d-on-accent);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), 0 8px 20px -10px var(--d-accent-glow);
+}
+.d-btn-primary:hover {
+  background: var(--d-accent-grad);
+  filter: brightness(1.08);
+}
+.d-btn-danger {
+  border-color: transparent;
+  background: var(--color-destructive);
+  color: var(--color-destructive-foreground);
+}
+.d-btn-danger:hover {
+  background: var(--color-destructive);
+  filter: brightness(1.1);
+}
+.d-btn-ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--d-text-muted);
+}
+.d-btn-ghost:hover {
+  background: var(--d-hover);
+  color: var(--dc-text);
+}
+
+/* Message composer: one glass well holding attach, text and send */
+.d-composer {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  border: 1px solid var(--d-line-strong);
+  border-radius: 14px;
+  background: var(--d-well);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.d-composer:focus-within {
+  border-color: var(--d-accent-line);
+  box-shadow: 0 0 0 3px var(--d-accent-soft);
+}
+.d-send {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: filter 150ms ease, box-shadow 150ms ease;
+}
+.d-send:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.d-send:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Floating glass menus: mention picker, hover action bar */
+.d-popover {
+  border: 1px solid var(--d-line-strong);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--dc-panel) 92%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: inset 0 1px 0 var(--d-highlight), 0 18px 40px -16px rgb(0 0 0 / 0.5);
+}
+
+.d-action-bar {
+  position: absolute;
+  top: -0.375rem;
+  right: 0.5rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--d-line-strong);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--dc-panel) 94%, transparent);
+  box-shadow: inset 0 1px 0 var(--d-highlight), 0 8px 20px -10px rgb(0 0 0 / 0.5);
+}
+
+/* Mentions of anyone in the server */
+.d-mention {
+  padding: 0 4px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--dc-accent) 24%, transparent);
+  color: var(--dc-accent);
+  font-weight: 600;
+}
+
+/* Empty states */
+.d-empty {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+.d-empty-icon {
+  display: flex;
+  width: 3.5rem;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  border-radius: 999px;
+  background: var(--d-accent-soft);
+  color: var(--dc-accent);
+  box-shadow: inset 0 1px 0 var(--d-highlight), 0 0 0 6px color-mix(in srgb, var(--dc-accent) 6%, transparent);
+}
+.d-empty-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.d-empty-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dc-text);
+}
+.d-empty-help {
+  max-width: 36ch;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--d-text-muted);
+}
+
+/* Server rail */
+.d-rail-item {
+  position: relative;
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: var(--d-card);
+  color: var(--dc-text);
+  box-shadow: inset 0 1px 0 var(--d-highlight);
+  transition: border-radius 180ms ease, background-color 150ms ease, box-shadow 150ms ease, color 150ms ease;
+}
+.d-rail-item:hover {
+  border-radius: 14px;
+  background: var(--d-accent-soft);
+  color: var(--dc-accent);
+}
+.d-rail-item[aria-pressed="true"] {
+  border-radius: 14px;
+  background: var(--d-accent-grad);
+  color: var(--d-on-accent);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.25), 0 0 0 1px var(--d-accent-line), 0 8px 22px -8px var(--d-accent-glow);
+}
+.d-rail-pill {
+  position: absolute;
+  left: -0.75rem;
+  top: 50%;
+  width: 4px;
+  height: 0;
+  border-radius: 0 4px 4px 0;
+  background: var(--dc-text);
+  transform: translateY(-50%);
+  transition: height 180ms ease, background-color 150ms ease;
+}
+.d-rail-item:hover .d-rail-pill {
+  height: 1.25rem;
+}
+.d-rail-item[aria-pressed="true"] .d-rail-pill {
+  height: 2rem;
+  background: var(--dc-accent);
+  box-shadow: 0 0 10px var(--d-accent-glow);
+}
+.d-rail-item:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+.d-rail-add {
+  border: 1px dashed var(--d-accent-line);
+  background: transparent;
+  color: var(--dc-accent);
+  box-shadow: none;
+}
+.d-rail-add:hover {
+  border-style: solid;
+  background: var(--d-accent-soft);
+}
+
+/* Square corners when the "Rounded corners" look setting is off */
+.discard-square :is(.d-row, .d-field, .d-composer, .d-card, .d-btn, .d-popover, .d-action-bar, .d-rail-item, .d-send, .d-chip) {
+  border-radius: 0 !important;
+}
+
+/* Icon button colour variants */
+.d-icon-btn.accent {
+  color: var(--dc-accent);
+}
+.d-icon-btn.on-accent {
+  color: var(--d-on-accent);
+}
+.d-icon-btn.on-accent:hover {
+  background: rgb(255 255 255 / 0.16);
+  color: var(--d-on-accent);
+}
+.d-icon-btn.danger:hover {
+  color: var(--color-destructive);
+}
+
+/* Selectable tiles: decoration picker */
+.d-tile {
+  display: flex;
+  border: 1px solid var(--d-line);
+  border-radius: 14px;
+  background: var(--d-card);
+  box-shadow: inset 0 1px 0 var(--d-highlight);
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+.d-tile:hover:not(:disabled) {
+  background: var(--d-hover);
+}
+.d-tile[aria-pressed="true"] {
+  border-color: var(--d-accent-line);
+  background: var(--d-accent-soft);
+  box-shadow: 0 0 0 3px var(--d-accent-soft);
+}
+
+/* Text inputs across Discard, including the shared kit Input. Unlayered so it beats the kit's utilities. */
+.discard-root input:not([type]),
+.discard-root input[type="text"],
+.discard-root input[type="search"],
+.discard-root input[type="email"],
+.discard-root input[type="url"],
+.discard-root input[type="password"],
+.discard-root textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--d-line-strong);
+  border-radius: 12px;
+  background: var(--d-well);
+  color: var(--dc-text);
+  font-size: 14px;
+  line-height: 1.25rem;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.discard-root input:not([type]):focus-visible,
+.discard-root input[type="text"]:focus-visible,
+.discard-root input[type="search"]:focus-visible,
+.discard-root input[type="email"]:focus-visible,
+.discard-root input[type="url"]:focus-visible,
+.discard-root input[type="password"]:focus-visible,
+.discard-root textarea:focus-visible {
+  border-color: var(--d-accent-line);
+  box-shadow: 0 0 0 3px var(--d-accent-soft);
+}
+.discard-root input::placeholder,
+.discard-root textarea::placeholder {
+  color: var(--d-text-faint);
+  opacity: 1;
+}
+.discard-root select {
+  padding: 0.3125rem 0.5rem;
+  border: 1px solid var(--d-line-strong);
+  border-radius: 10px;
+  background: var(--d-well);
+  color: var(--dc-text);
+  font-size: 13px;
+  outline: none;
+}
+.discard-root select:focus-visible {
+  border-color: var(--d-accent-line);
+  box-shadow: 0 0 0 3px var(--d-accent-soft);
+}
+.discard-root input.d-bare-input {
+  width: auto;
+  padding: 0 0.25rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.discard-root input.d-bare-input:focus-visible {
+  box-shadow: none;
+}
+
+/* Avatar status dot */
+.d-status {
+  border: 2px solid var(--dc-panel);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .discard-root,
+  .discard-root *,
+  .discard-root *::before,
+  .discard-root *::after {
+    transition-duration: 0ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Profile banners (preset gradients or a custom picture). Presets animate; custom pictures are still. */
+.d-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-size: 220% 220%;
+  animation: d-banner-flow 4s ease-in-out infinite alternate;
+}
+.d-banner--custom {
+  animation: none;
+  background: var(--d-card);
+}
+.d-banner--blurple { background-image: linear-gradient(135deg, #5865f2, #8b5cf6); }
+.d-banner--sunset { background-image: linear-gradient(135deg, #f97316, #ec4899); }
+.d-banner--aurora { background-image: linear-gradient(135deg, #22d3ee, #a3e635, #8b5cf6); }
+.d-banner--ocean { background-image: linear-gradient(135deg, #0ea5e9, #1e3a8a); }
+.d-banner--rose { background-image: linear-gradient(135deg, #fb7185, #be123c); }
+.d-banner--midnight {
+  background-image: radial-gradient(circle at 20% 30%, #fff8 1px, transparent 2px), linear-gradient(135deg, #0f172a, #312e81);
+  background-size: 18px 18px, 220% 220%;
+  animation: d-banner-night 14s linear infinite;
+}
+.d-banner--forest { background-image: linear-gradient(135deg, #14532d, #22c55e); }
+.d-banner--gold { background-image: linear-gradient(135deg, #facc15, #b45309); }
+.d-banner--candy {
+  background-image: repeating-linear-gradient(45deg, #f9a8d4 0 12px, #fff 12px 24px);
+  background-size: auto;
+  animation: d-banner-stripes 10s linear infinite;
+}
+.d-banner--xmas {
+  background-image: repeating-linear-gradient(-45deg, #dc2626 0 14px, #f8fafc 14px 20px, #16a34a 20px 34px, #f8fafc 34px 40px);
+  background-size: auto;
+  animation: d-banner-stripes 10s linear infinite;
+}
+@keyframes d-banner-flow { from { background-position: 0% 20%; } to { background-position: 100% 80%; } }
+@keyframes d-banner-stripes { from { background-position: 0 0; } to { background-position: 113px 0; } }
+@keyframes d-banner-night { from { background-position: 0 0, 0% 20%; } to { background-position: 18px 18px, 100% 80%; } }
+
+/* Name effects: glyphs drift or twinkle around the name. */
+.d-fx { position: relative; display: inline-block; }
+.d-fx-layer { position: absolute; inset: -0.6em 0; pointer-events: none; overflow: visible; }
+.d-fx-layer > span { position: absolute; top: 0; font-size: 0.8em; line-height: 1; opacity: 0; animation: d-fx-fall 2.7s linear infinite; }
+.d-fx--snow .d-fx-layer > span { color: #e0f2fe; text-shadow: 0 0 3px #7dd3fc; }
+.d-fx--stars .d-fx-layer > span { color: #fde047; text-shadow: 0 0 4px #facc15; animation-name: d-fx-twinkle; }
+.d-fx--hearts .d-fx-layer > span { color: #fb7185; top: auto; bottom: 0; animation-name: d-fx-rise; }
+.d-fx--sparkles .d-fx-layer > span { color: #c4b5fd; text-shadow: 0 0 4px #a78bfa; animation-name: d-fx-twinkle; }
+.d-fx--stars .d-fx-layer > span:nth-child(even),
+.d-fx--sparkles .d-fx-layer > span:nth-child(even) { top: auto; bottom: 0; }
+@keyframes d-fx-fall { 0% { transform: translateY(-2px) rotate(0); opacity: 0; } 20% { opacity: 0.95; } 100% { transform: translateY(1.6em) rotate(180deg); opacity: 0; } }
+@keyframes d-fx-rise { 0% { transform: translateY(0) scale(0.6); opacity: 0; } 30% { opacity: 0.9; } 100% { transform: translateY(-1.6em) scale(1); opacity: 0; } }
+@keyframes d-fx-twinkle { 0%, 100% { transform: translate(-0.4em, 0.3em) scale(0.3); opacity: 0; } 50% { transform: translate(0.4em, -0.3em) scale(1.1); opacity: 1; } }
+
+/* Mod Management flame: a spinning gradient edge around the pill. Motion stops for reduced motion. */
+.d-flame {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+  color: #fdf4ff;
+  background: linear-gradient(90deg, #7c3aed, #c026d3, #f97316, #7c3aed);
+  background-size: 300% 100%;
+  box-shadow: 0 0 6px #a855f7, 0 0 10px #c084fc;
+  animation: d-flame-shift 2.4s linear infinite;
+}
+@keyframes d-flame-shift { from { background-position: 0% 50%; } to { background-position: 300% 50%; } }
+
+/* Hide profile banners and name effects (user setting). Custom pictures in the settings preview stay visible. */
+html[data-hide-profile-fx] .d-banner:not(.d-keep) {
+  background: var(--d-card) !important;
+  animation: none !important;
+}
+html[data-hide-profile-fx] .d-banner:not(.d-keep) img { display: none; }
+html[data-hide-profile-fx] .d-fx-layer { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .d-banner,
+  .d-banner--midnight,
+  .d-banner--candy,
+  .d-banner--xmas,
+  .d-flame {
+    animation: none !important;
+  }
+  .d-fx-layer > span {
+    animation: none !important;
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,10 @@
+ALTER TABLE public.discard_profiles ADD COLUMN avatar_path text;
+CREATE TABLE public.discard_chat_tags (user_id uuid PRIMARY KEY, tag text NOT NULL DEFAULT 'owner' CHECK (tag = 'owner'));
+GRANT SELECT ON public.discard_chat_tags TO authenticated;
+GRANT ALL ON public.discard_chat_tags TO service_role;
+ALTER TABLE public.discard_chat_tags ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Read verified chat tags" ON public.discard_chat_tags FOR SELECT TO authenticated USING (true);
+CREATE POLICY "Read Discard avatars" ON storage.objects FOR SELECT TO authenticated USING (bucket_id = 'discard-avatars');
+CREATE POLICY "Upload own Discard avatar" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'discard-avatars' AND (storage.foldername(name))[1] = auth.uid()::text AND lower(storage.extension(name)) IN ('png','jpg','jpeg','webp'));
+CREATE POLICY "Delete own Discard avatar" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'discard-avatars' AND (storage.foldername(name))[1] = auth.uid()::text);
+ALTER TABLE public.discard_profiles ADD CONSTRAINT discard_avatar_own_path CHECK (avatar_path IS NULL OR (split_part(avatar_path, '/', 1) = user_id::text AND avatar_path ~ '\.(png|jpg|jpeg|webp)$'));

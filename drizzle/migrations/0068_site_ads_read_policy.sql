@@ -1,0 +1,1 @@
+CREATE POLICY "Signed in view ad images" ON storage.objects FOR SELECT TO authenticated USING (bucket_id='site-ads');

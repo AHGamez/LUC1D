@@ -1,0 +1,99 @@
+<script>
+    if (window.self === window.top) {
+        // Not in an iframe
+        window.location.href = "/index.html";
+    }
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script>(function(){function S(){var d={};return{getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}["localStorage","sessionStorage"].forEach(function(n){try{window[n].length}catch(e){try{Object.defineProperty(window,n,{value:S(),configurable:true})}catch(_){}}});try{indexedDB.open("_luc1d")}catch(e){try{Object.defineProperty(window,"indexedDB",{value:undefined,configurable:true})}catch(_){}}})();</script>
+  <script src="https://55gms.com/assets/js/save-agent.js?v=4"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/55gms/gms-ads@b995962daa60e71ea2ab3bdaf6e10f8c6853a7fe/embed/dist/sdk.min.js"
+    integrity="sha384-TshTwF2bDJgpoZFNenR6Wn1Ldh7BMyNG42LqxG2OTTuBEUk0+Nabn9pIPCWz5AIT"
+    crossorigin="anonymous"
+    data-game-id="fryingnemo"
+    data-compat=""
+  ></script>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>PFISH</title>
+    <script src="https://cdn.jsdelivr.net/gh/55gms/assets@86dba3822eb145dd1780438a918249e111dc9cae/misc/fryingnemo/Build/UnityLoader.js"></script>
+    <script src="https://55gms.com/assets/js/loader-ui.js?v=5gz9swuael"></script>
+    <script src="https://55gms.com/assets/js/game-loader.js?v=5gz9swuael" data-title="Frying Nemo"></script>
+    <script>
+      GameLoader.unity([
+        ["Build/Web7.data.unityweb", 6184890],
+        ["Build/Web7.wasm.code.unityweb", 5179190],
+        ["Build/Web7.wasm.framework.unityweb", 117794],
+      ]);
+    </script>
+    <base href="https://cdn.jsdelivr.net/gh/55gms/assets@86dba3822eb145dd1780438a918249e111dc9cae/misc/fryingnemo/">
+    <script>
+        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Web7.json");
+
+        window.onresize = function () {
+            var canvas = gameInstance.Module.canvas;
+            var container = gameInstance.container;
+
+            var w = window.innerWidth;
+            var h = window.innerHeight;
+
+            container.style.width = canvas.style.width = w + "px";
+            container.style.height = canvas.style.height = h + "px";
+            container.style.top = "0px";
+            container.style.left = "0px";
+        };
+
+        window.onload = function () {
+            window.onresize();
+        };
+    </script>
+    <style>
+        html,
+        body {
+            background: #000;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        div#gameContainer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent !important;
+        }
+
+        div#gameContainer canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            image-rendering: optimizeSpeed;
+            image-rendering: -webkit-crisp-edges;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -o-crisp-edges;
+            image-rendering: crisp-edges;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: optimize-contrast;
+            image-rendering: pixelated;
+            -ms-interpolation-mode: nearest-neighbor;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gameContainer"></div>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon='{"version":"2024.11.0","token":"3af592e2f72249a2939700dadf653634","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

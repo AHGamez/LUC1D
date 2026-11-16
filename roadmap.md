@@ -1,0 +1,6 @@
+- [x] Battle Pass on side rail
+- [x] Video maker/editor on side rail + TikiTaki post page
+- [x] Change profile pictures in TikiTaki
+- [x] Mods can give people money
+- [x] Music playlists (make, post, browse, play)
+- [x] GIF profile picture / banner unlocks ($50 each)

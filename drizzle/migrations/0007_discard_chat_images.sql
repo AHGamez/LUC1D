@@ -1,0 +1,7 @@
+ALTER TABLE public.discard_messages ADD COLUMN image_path text;
+ALTER TABLE public.discard_dms ADD COLUMN image_path text;
+ALTER TABLE public.discard_messages ADD CONSTRAINT discard_message_image_owner CHECK (image_path IS NULL OR split_part(image_path, '/', 1) = user_id::text);
+ALTER TABLE public.discard_dms ADD CONSTRAINT discard_dm_image_owner CHECK (image_path IS NULL OR split_part(image_path, '/', 1) = sender_id::text);
+CREATE POLICY "Upload own chat images" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'discard-chat-images' AND (storage.foldername(name))[1] = auth.uid()::text AND lower(storage.extension(name)) IN ('png','jpg','jpeg','webp','gif'));
+CREATE POLICY "Read visible chat images" ON storage.objects FOR SELECT TO authenticated USING (bucket_id = 'discard-chat-images' AND ((storage.foldername(name))[1] = auth.uid()::text OR EXISTS (SELECT 1 FROM public.discard_messages m WHERE m.image_path = name) OR EXISTS (SELECT 1 FROM public.discard_dms d WHERE d.image_path = name)));
+CREATE POLICY "Delete own chat images" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'discard-chat-images' AND (storage.foldername(name))[1] = auth.uid()::text);

@@ -1,0 +1,59 @@
+<script>(function(){function S(){var d={};return{getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}["localStorage","sessionStorage"].forEach(function(n){try{window[n].length}catch(e){try{Object.defineProperty(window,n,{value:S(),configurable:true})}catch(_){}}});try{indexedDB.open("_luc1d")}catch(e){try{Object.defineProperty(window,"indexedDB",{value:undefined,configurable:true})}catch(_){}}})();</script><script src="https://55gms.com/assets/js/save-agent.js?v=4"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/55gms/gms-ads@b995962daa60e71ea2ab3bdaf6e10f8c6853a7fe/embed/dist/sdk.min.js"
+    integrity="sha384-TshTwF2bDJgpoZFNenR6Wn1Ldh7BMyNG42LqxG2OTTuBEUk0+Nabn9pIPCWz5AIT"
+    crossorigin="anonymous"
+    data-game-id="super-foulist"
+    data-compat="poki"
+  ></script>
+<style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    #content {
+        background: #000000;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<meta charset="utf-8">
+<title>Super Fowlst</title>
+<base href="https://cdn.jsdelivr.net/gh/55gms/assets@e6dafba78d77deea9bf03d88e4d94efec394ef58/misc/super-foulist/">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" id="viewport"
+    name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+</head>
+
+<body dir="ltr">
+    <script src="game.js"></script>
+    <script src="SuperFowlst.js" type="text/javascript"></script>
+    <script>
+        window.addEventListener("touchmove", function (event) {
+            event.preventDefault();
+        }, {
+            capture: false,
+            passive: false
+        });
+        if (typeof window.devicePixelRatio != 'undefined' && window.devicePixelRatio > 2) {
+            var meta = document.getElementById("viewport");
+            meta.setAttribute('content', 'width=device-width, initial-scale=' + (2 / window.devicePixelRatio) + ', user-scalable=no');
+        }
+    </script>
+    <div id="content"></div>
+    <script type="text/javascript">
+        lime.embed("Super Fowlst", "content", 960, 540);
+    </script>
+    <script>
+        gadgets.util.runOnLoadHandlers();
+    </script>
+    <script>
+        window.google.csi.tickDl();
+    </script>
+</body>
+
+</html>

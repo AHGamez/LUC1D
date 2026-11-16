@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){function S(){var d={};return{getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}["localStorage","sessionStorage"].forEach(function(n){try{window[n].length}catch(e){try{Object.defineProperty(window,n,{value:S(),configurable:true})}catch(_){}}});try{indexedDB.open("_luc1d")}catch(e){try{Object.defineProperty(window,"indexedDB",{value:undefined,configurable:true})}catch(_){}}})();</script>
+  <script src="https://55gms.com/assets/js/save-agent.js?v=4"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/55gms/gms-ads@b995962daa60e71ea2ab3bdaf6e10f8c6853a7fe/embed/dist/sdk.min.js"
+    integrity="sha384-TshTwF2bDJgpoZFNenR6Wn1Ldh7BMyNG42LqxG2OTTuBEUk0+Nabn9pIPCWz5AIT"
+    crossorigin="anonymous"
+    data-game-id="dino-simulator"
+    data-compat="poki"
+  ></script>
+  <script src="https://55gms.com/assets/js/cdn-compat.js"></script>
+  <base href="https://cdn.jsdelivr.net/gh/55gms/assets@284f8e96e592a97bac95a26e3676be7f8dd277f2/misc/dino-simulator/" />
+		<meta name="build-version" content="165.1350">
+		<script>window.__PACK='pack_a'</script>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, viewport-fit=cover">
+ <meta name="color-scheme" content="light dark">
+ <meta name="supported-color-schemes" content="light dark">
+ <title>Dino Simulator</title>
+ <meta name="theme-color" content="#194638">
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <meta name="mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-title" content="Dino Simulator">
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+ <style>
+@font-face {
+	font-family: 'SN Pro';
+	src: url('SNPro-Regular.woff2') format('woff2');
+	font-weight: 400 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Giant Display';
+	src: url('GiantDisplay-Regular.ttf') format('truetype');
+	font-weight: 400 900;
+	font-style: normal;
+	font-display: swap;
+}
+*, *::before, *::after {
+	-webkit-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: transparent;
+}
+input, textarea {
+	-webkit-user-select: text;
+	user-select: text;
+	-webkit-touch-callout: default;
+}
+html, body {
+	color-scheme: light dark;
+	forced-color-adjust: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: rgb(25, 70, 56);
+	color: white;
+	touch-action: none;
+	overscroll-behavior: none;
+}
+#canvas, #ui {
+	display: block;
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	outline: none;
+	color-scheme: light dark;
+	forced-color-adjust: none;
+	filter: none !important;
+}
+#ui {
+	z-index: 1;
+	touch-action: none;
+}
+@media (prefers-color-scheme: dark) {
+	html, body {
+		color-scheme: light dark;
+		forced-color-adjust: none;
+		background-color: rgb(25, 70, 56);
+		color: white;
+	}
+	#canvas, #ui {
+		color-scheme: light dark;
+		forced-color-adjust: none;
+		filter: none !important;
+	}
+}
+#status-notice {
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	max-width: min(80%, 480px);
+	font-family: 'SN Pro', Arial, sans-serif;
+	background-color: #5b3943;
+	border: 1px solid #9b3943;
+	border-radius: 0.5rem;
+	color: #e0e0e0;
+	line-height: 1.3;
+	padding: 1rem;
+	text-align: center;
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+#status-actions {
+	display: flex;
+	justify-content: center;
+	gap: 0.6rem;
+	margin-top: 0.85rem;
+}
+#status-actions button {
+	display: block;
+	width: 2.25rem;
+	height: 2.25rem;
+	padding: 0;
+	border: 1px solid rgba(0, 0, 0, 0.35);
+	border-radius: 0.35rem;
+	background-color: #f2f2f2;
+	color: #2a2a2a;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+#status-actions svg {
+	display: block;
+	width: 1.15rem;
+	height: 1.15rem;
+	margin: 0 auto;
+	stroke: currentColor;
+	fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+#status-copy.done {
+	background-color: #9ad79a;
+}
+
+#initial-loading {
+ position: fixed; inset: 0; z-index: 3; display: flex;
+ align-items: center; justify-content: center;
+ background-color: rgb(25, 70, 56); color: #ffffff;
+ color-scheme: light dark; forced-color-adjust: none; filter: none !important;
+ pointer-events: none; font: bold 28px Arial, sans-serif;
+}
+#initial-loading span { animation: initial-loading-pulse 0.8s ease-in-out infinite alternate; }
+@keyframes initial-loading-pulse { from { transform: scale(0.94); } to { transform: scale(1.06); } }
+@media (prefers-color-scheme: dark) {
+ #initial-loading { background-color: rgb(25, 70, 56); color: #ffffff;
+ color-scheme: light dark; forced-color-adjust: none; filter: none !important; }
+}
+</style>
+ <script id="browser-compat">
+			if (typeof Object.hasOwn !== 'function') {
+				Object.defineProperty(Object, 'hasOwn', {
+					value: function hasOwn(object, property) {
+						if (object === null || object === undefined) {
+							throw new TypeError('Cannot convert undefined or null to object')
+						}
+						return Object.prototype.hasOwnProperty.call(Object(object), property)
+					},
+					writable: true,
+					configurable: true
+				})
+			}
+		</script>
+ <script>
+ window.__IS_DEV_HOST = false
+ window.__IS_DEV = false
+</script>
+ <script>
+(function () {
+ var pack = window.__PACK;
+ if (!pack) { try { pack = localStorage.getItem('dino.pack'); } catch (_) {} }
+ if (window.__IS_DEV_HOST) return;
+ var params = new URLSearchParams(location.search);
+ var token = params.get('nocache');
+ function preload(path, kind) {
+  var link = document.createElement('link');
+  link.rel = kind === 'image' ? 'preload' : 'modulepreload';
+  if (kind === 'image') link.as = 'image';
+  link.href = path + (token ? '?nocache=' + encodeURIComponent(token) : '');
+  document.head.appendChild(link);
+ }
+ preload((pack || 'pack_a') + '/title.webp', 'image');
+ preload('./index.js', 'script');
+})();
+</script>
+ <!-- Defer lets the initial text paint while the SDK downloads. It runs before bootstrap.js. -->
+ <script defer src="poki-sdk.js"></script>
+ <!-- On a dev host every file is fetched under its own content hash, the shell included. The
+      ?nocache stamp busts the page, but a static import resolves bare, and with no Cache-Control
+      from the server a browser is free to serve whichever copy of a module it holds; an iPhone
+      did, and the page died at link time on an export the old copy never had. An import map
+      applies to relative specifiers once resolved, so one that sends every module of the build
+      to itself plus its hash makes a changed module a new URL and an unchanged one a cached
+      one. The same table stamps the art through window.__NOCACHE_URL. It is script/files.json,
+      written by the upload beside the build; a checkout has none and uses the load's stamp, as
+      it always did. Read synchronously: the map has to be in the document before the first
+      module script is. -->
+ <script>
+(function () {
+ var stamp = Date.now()
+ var table = null
+ if (window.__IS_DEV) {
+  try {
+   var request = new XMLHttpRequest()
+   request.open('GET', 'script/files.json?nocache=' + stamp, false)
+   request.send(null)
+   if (request.status === 200) table = JSON.parse(request.responseText)
+  } catch (e) { console.warn('[boot] files not stamped:', e) }
+ }
+ window.__FILE_STAMPS = table
+ window.__FILE_STAMP = function (url) {
+  try { return (table && table[new URL(url, location.href).pathname.slice(new URL('.', location.href).pathname.length)]) || '' } catch (e) { return '' }
+ }
+ var shell = 'bootstrap.js' + (window.__IS_DEV ? '?' + (table && table['bootstrap.js'] ? 'v=' + table['bootstrap.js'] : 'nocache=' + stamp) : '')
+ if (table) {
+  var imports = {}, count = 0
+  for (var path in table) {
+   if (!/\.m?js$/.test(path)) continue
+   var full = new URL(path, location.href).pathname
+   imports[full] = full + '?v=' + table[path]
+   count++
+  }
+  window.__STAMPED_MODULES = count
+  document.write('<script type="importmap">' + JSON.stringify({ imports: imports }) + '<\/script>')
+ }
+ document.write('<script type="module" src="' + shell + '"><\/script>')
+})()
+</script>
+</head>
+<body>
+ <div id="initial-loading" role="status"><span>Loading…</span></div>
+ <canvas id="canvas" tabindex="0"></canvas>
+ <canvas id="ui"></canvas>
+ <div id="status-notice"></div>
+</body>
+</html>

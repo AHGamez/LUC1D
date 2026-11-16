@@ -1,0 +1,58 @@
+/* Club Bird art: paid profile rings and the animated pet sprites. Every animation stops for reduced motion. */
+
+.club-ring {
+  --ring-main: oklch(0.85 0.17 155);
+  --ring-secondary: oklch(0.8 0.14 210);
+  position: absolute;
+  inset: -17%;
+  width: 134%;
+  height: 134%;
+  pointer-events: none;
+  overflow: visible;
+}
+.club-ring--ring-nebula { --ring-main: oklch(0.72 0.2 320); --ring-secondary: oklch(0.7 0.17 260); }
+.club-ring--ring-inferno { --ring-main: oklch(0.7 0.22 35); --ring-secondary: oklch(0.85 0.17 80); }
+.club-ring--ring-rainbow { --ring-main: oklch(0.8 0.18 150); --ring-secondary: oklch(0.75 0.2 20); }
+.club-ring--ring-royal { --ring-main: oklch(0.85 0.16 88); --ring-secondary: oklch(0.6 0.2 300); }
+.club-ring--ring-frost { --ring-main: oklch(0.88 0.1 220); --ring-secondary: oklch(0.97 0.03 220); }
+.club-ring--ring-toxic { --ring-main: oklch(0.85 0.25 140); --ring-secondary: oklch(0.7 0.2 110); }
+.club-ring--ring-legend { --ring-main: oklch(0.8 0.2 40); --ring-secondary: oklch(0.85 0.17 88); }
+
+.club-ring-orbit { transform-origin: 50% 50%; animation: club-orbit 14s linear infinite; }
+.club-ring-halo { stroke: var(--ring-main); stroke-width: 3; opacity: 0.25; }
+.club-ring-trail { stroke: var(--ring-main); stroke-width: 3; stroke-linecap: round; filter: drop-shadow(0 0 2px var(--ring-main)); }
+.club-ring-secondary { stroke: var(--ring-secondary); stroke-width: 2; stroke-linecap: round; }
+.club-ring-sparkles {
+  fill: oklch(0.98 0.02 280);
+  filter: drop-shadow(0 0 2px var(--ring-main));
+  animation: club-sparkle 3s ease-in-out infinite;
+  transform-origin: center;
+}
+.club-ring--ring-inferno .club-ring-orbit { animation-duration: 5s; }
+.club-ring--ring-rainbow .club-ring-orbit { animation: club-orbit 8s linear infinite, club-hue 4s linear infinite; }
+.club-ring--ring-royal .club-ring-trail,
+.club-ring--ring-legend .club-ring-trail { stroke-width: 4.5; }
+.club-ring--ring-legend .club-ring-trail { stroke-width: 5; }
+
+@keyframes club-orbit { to { transform: rotate(360deg); } }
+@keyframes club-hue { to { filter: hue-rotate(360deg); } }
+@keyframes club-sparkle { 0%, 100% { opacity: 0.4; transform: scale(0.94); } 50% { opacity: 1; transform: scale(1); } }
+
+.club-pet-bob { animation: club-bob 0.5s ease-in-out infinite; }
+.club-pet-leg-a,
+.club-pet-leg-b { transform-box: fill-box; transform-origin: top; animation: club-step 0.5s ease-in-out infinite; }
+.club-pet-leg-b { animation-direction: reverse; }
+@keyframes club-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1px); } }
+@keyframes club-step { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(14deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .club-ring-orbit,
+  .club-ring-sparkles,
+  .club-pet-bob,
+  .club-pet-leg-a,
+  .club-pet-leg-b { animation: none; }
+}
+
+/* Turkey hunts: clickable turkeys in the plaza. */
+.turkey-target { cursor: crosshair; }
+.turkey-target:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }

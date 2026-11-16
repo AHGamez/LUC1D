@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script>(function(){function S(){var d={};return{getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}["localStorage","sessionStorage"].forEach(function(n){try{window[n].length}catch(e){try{Object.defineProperty(window,n,{value:S(),configurable:true})}catch(_){}}});try{indexedDB.open("_luc1d")}catch(e){try{Object.defineProperty(window,"indexedDB",{value:undefined,configurable:true})}catch(_){}}})();</script>
+  <script src="https://55gms.com/assets/js/save-agent.js?v=4"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/55gms/gms-ads@b995962daa60e71ea2ab3bdaf6e10f8c6853a7fe/embed/dist/sdk.min.js"
+    integrity="sha384-TshTwF2bDJgpoZFNenR6Wn1Ldh7BMyNG42LqxG2OTTuBEUk0+Nabn9pIPCWz5AIT"
+    crossorigin="anonymous"
+    data-game-id="cuphead"
+    data-compat=""
+  ></script>
+    <script src="https://55gms.com/assets/js/loader-ui.js?v=5gz9swuael"></script>
+    <script src="https://55gms.com/assets/js/game-loader.js?v=5gz9swuael" data-title="Cuphead"></script>
+    <base href="https://cdn.jsdelivr.net/gh/web-ports/cuphead@c9ff1b6b16f9d402b78a42fc2200e1c076c0ab6e/">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Cuphead</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: #231F20;
+        }
+
+        #unity-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            background: #231F20;
+        }
+    </style>
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+</head>
+
+<body>
+    <div id="unityContainer"></div>
+    <script>
+        function getParts(file, start, end) {
+            let parts = [];
+            for (let i = start; i <= end; i++) {
+                parts.push(file + ".part" + i);
+            }
+            return parts;
+        }
+
+        function resizeUnityContainer() {
+            var container = document.getElementById("unityContainer");
+            var canvas = container.querySelector("canvas");
+
+            container.style.width = window.innerWidth + "px";
+            container.style.height = window.innerHeight + "px";
+
+            if (canvas) {
+                canvas.style.width = window.innerWidth + "px";
+                canvas.style.height = window.innerHeight + "px";
+            }
+        }
+
+
+        (async () => {
+            GameLoader.expect(2101.31 * 1048576);
+
+            const [dataUrl, wasmUrl, asmUrl] = await Promise.all([
+                GameLoader.merge(getParts("Build/CupheadPort.data.unityweb", 1, 103)),
+                GameLoader.merge(getParts("Build/CupheadPort.wasm.code.unityweb", 1, 2)),
+                GameLoader.merge(getParts("Build/CupheadPort.asm.code.unityweb", 1, 3)),
+            ]);
+
+            // The build config names whole files; hand Unity the merged parts.
+            const originalOpen = XMLHttpRequest.prototype.open;
+            XMLHttpRequest.prototype.open = function (method, url, ...rest) {
+                url = String(url);
+                if (url.includes("CupheadPort.data.unityweb")) url = dataUrl;
+                else if (url.includes("CupheadPort.wasm.code.unityweb")) url = wasmUrl;
+                else if (url.includes("CupheadPort.asm.code.unityweb")) url = asmUrl;
+                return originalOpen.call(this, method, url, ...rest);
+            };
+            window.addEventListener("resize", resizeUnityContainer);
+
+            UnityLoader.instantiate("unityContainer", "Build/CupheadPort.json", {
+                Module: {
+                    onRuntimeInitialized: function () {
+                        resizeUnityContainer();
+                        GameLoader.finish();
+                    },
+                },
+            });
+        })().catch(GameLoader.fail);
+    </script>
+</body>
+
+</html>

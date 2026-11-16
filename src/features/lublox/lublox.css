@@ -1,0 +1,60 @@
+/* Lublox-only styles. Scoped to .lublox so nothing leaks into the rest of the desktop. */
+
+.lublox {
+  --lublox-sky: #c7e9ed;
+  --lublox-platform: #438d98;
+  --lublox-body: #385b69;
+  --lublox-grid: #c7cecb;
+  --lublox-goal: #f1c85b;
+}
+
+/* Game art keeps its palette. The frame around it uses the Lublox accent token. */
+.lublox {
+  --lublox-accent: var(--app-lublox, var(--primary));
+}
+
+.lublox-art-sky { fill: var(--lublox-sky); }
+.lublox-art-top { fill: var(--lublox-platform); }
+.lublox-art-side { fill: var(--lublox-body); }
+.lublox-art-front { fill: var(--lublox-grid); }
+.lublox-art-goal { stroke: var(--lublox-goal); }
+
+/* Name tags floating above avatars in the 3D scene. */
+.lublox-tag {
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font: 700 13px/1.2 system-ui, sans-serif;
+  color: var(--color-foreground, currentColor);
+  background: var(--shell-glass, color-mix(in oklab, var(--color-background, transparent) 70%, transparent));
+  box-shadow: inset 0 1px 0 var(--shell-glass-highlight, transparent);
+  text-shadow: 0 1px 2px color-mix(in oklab, var(--color-background, transparent) 80%, transparent);
+}
+
+/* In-world HUD panels: glass over the 3D scene, same surface as the desktop shell. */
+.lublox-board {
+  color: var(--color-foreground, currentColor);
+  background: var(--shell-glass, color-mix(in oklab, var(--color-background, #fff) 72%, transparent));
+  box-shadow: inset 0 1px 0 var(--shell-glass-highlight, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in oklab, var(--color-foreground, #000) 12%, transparent);
+}
+
+/* Round HUD buttons that sit on top of the canvas. */
+.lublox-topbtn {
+  background: color-mix(in oklab, var(--color-background, #fff) 55%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+/* Game tiles lift slightly on hover, respecting reduced motion. */
+.lublox-tile {
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lublox-tile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px -12px color-mix(in oklab, var(--color-foreground, #000) 40%, transparent);
+  }
+}

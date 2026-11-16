@@ -1,0 +1,10 @@
+CREATE FUNCTION public.discard_is_day_one(_created_at timestamptz) RETURNS boolean LANGUAGE sql IMMUTABLE SET search_path = public AS $$ SELECT _created_at >= timestamptz '2026-10-28 00:00:00 America/Chicago' AND _created_at < timestamptz '2026-10-29 00:00:00 America/Chicago' $$;
+CREATE TABLE public.discard_day_one_tags (user_id uuid PRIMARY KEY);
+GRANT SELECT ON public.discard_day_one_tags TO authenticated;
+GRANT ALL ON public.discard_day_one_tags TO service_role;
+ALTER TABLE public.discard_day_one_tags ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Read Day 1 tags" ON public.discard_day_one_tags FOR SELECT TO authenticated USING (true);
+INSERT INTO public.discard_day_one_tags (user_id) SELECT id FROM auth.users WHERE public.discard_is_day_one(created_at);
+CREATE FUNCTION public.discard_award_day_one() RETURNS trigger LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$ BEGIN IF public.discard_is_day_one(NEW.created_at) THEN INSERT INTO public.discard_day_one_tags (user_id) VALUES (NEW.id) ON CONFLICT DO NOTHING; END IF; RETURN NEW; END $$;
+REVOKE ALL ON FUNCTION public.discard_award_day_one() FROM PUBLIC, anon, authenticated;
+CREATE TRIGGER discard_day_one_signup AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION public.discard_award_day_one();

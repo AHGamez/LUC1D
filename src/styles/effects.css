@@ -1,0 +1,209 @@
+/* Aurora Glass surfaces, app tiles, glass shell, windows, starfield motion, glass wordmark and clock,
+   and the PS5-style zoom-open. Every animation and transition is switched off for users who prefer
+   reduced motion (see the block at the end of this file). */
+
+/* Glass surfaces used by the sidebar, tab bar, floating bars and modals. */
+.shell-glass {
+  background: var(--shell-glass);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--shell-glass-border);
+  box-shadow: var(--surface-highlight), var(--shell-glass-shadow);
+}
+/* A denser glass for surfaces that sit over busy content (modals, the layout chooser). */
+.shell-glass-strong {
+  background: var(--shell-glass-strong);
+  backdrop-filter: blur(calc(var(--glass-blur) + 8px)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 8px)) saturate(var(--glass-saturate));
+  border-color: var(--shell-glass-border);
+  box-shadow: var(--surface-highlight), var(--shell-glass-shadow);
+}
+.shell-rounded { border-radius: var(--shell-radius); border-color: var(--shell-glass-border); }
+.shell-window { border-bottom-left-radius: calc(var(--shell-radius) - 1px); border-bottom-right-radius: calc(var(--shell-radius) - 1px); }
+.shell-glass [role="tab"][aria-selected="true"] { background: var(--shell-tab); border-color: var(--shell-glass-border); }
+.shell-glass [role="tab"][aria-selected="false"]:hover { background: var(--shell-tab-hover); }
+
+/* Aurora component classes live in the components layer, so Tailwind utilities (hover:bg-accent, etc.)
+   still win over them. */
+@layer components {
+
+/* Aurora cards and grouped panels: a soft vertical sheen, a bright top edge and an accent-tinted shadow. */
+.surface-card {
+  background: linear-gradient(180deg, color-mix(in oklch, var(--card) 86%, white 7%) 0%, var(--card) 65%);
+  border: 1px solid var(--shell-glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--surface-highlight), var(--shadow-card);
+}
+/* Controls (buttons, inputs, segmented bars): 12px, a quiet fill and the same top edge. */
+.surface-control {
+  background: color-mix(in oklch, var(--secondary) 80%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  box-shadow: var(--surface-highlight);
+}
+/* The selected segment or tab sits on a card-coloured chip. */
+.surface-tab-selected {
+  background: var(--card);
+  color: var(--foreground);
+  box-shadow: var(--surface-highlight), var(--shadow-raised);
+}
+
+/* Windows: 18px radius, a glass titlebar and the window shadow with a bright top edge. */
+.app-window {
+  background: linear-gradient(180deg, color-mix(in oklch, var(--card) 94%, white 5%) 0%, var(--card) 40%);
+  border: 1px solid var(--shell-glass-border);
+  border-radius: var(--shell-radius);
+}
+.app-titlebar {
+  background: color-mix(in oklch, var(--titlebar) 78%, transparent);
+  border-bottom: 1px solid var(--shell-glass-border);
+  box-shadow: var(--surface-highlight);
+}
+
+/* App icon tile: a 40px rounded square with a gradient from the --tile tint. Set --tile per app. */
+.app-tile {
+  background: linear-gradient(155deg, color-mix(in oklch, var(--tile) 70%, white) 0%, var(--tile) 52%, color-mix(in oklch, var(--tile) 68%, black) 100%);
+  color: var(--app-ink);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 38%), inset 0 -1px 0 oklch(0 0 0 / 16%), 0 10px 22px -12px color-mix(in oklch, var(--tile) 85%, transparent);
+}
+
+/* Small uppercase labels above groups and sections. */
+.section-label {
+  font-size: var(--text-caption);
+  line-height: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+/* Aurora backdrop for sign-in and other full-page screens. Soft tinted glows over the background. */
+.aurora-backdrop {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 18% 14%, color-mix(in oklch, var(--app-stem) 26%, transparent), transparent 55%),
+    radial-gradient(ellipse at 84% 82%, color-mix(in oklch, var(--app-longform) 24%, transparent), transparent 55%),
+    var(--background);
+}
+
+}
+
+/* Glass logo: a frosted wordmark with a bright edge, readable on any wallpaper. */
+.lucid-wordmark { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 700; letter-spacing: 0; }
+.glass-wordmark {
+  color: var(--logo-glass);
+  -webkit-text-stroke: 1px var(--logo-edge);
+  text-shadow: 0 2px 1px var(--shell-glass-highlight), 0 8px 28px var(--shell-glass-highlight);
+}
+/* Small glass chip for the logo in the sidebar. */
+.glass-logo-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--shell-glass-border);
+  background: linear-gradient(160deg, oklch(1 0 0 / 22%), oklch(1 0 0 / 4%));
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 30%), 0 6px 18px -8px oklch(0 0 0 / 60%);
+  color: var(--foreground);
+}
+
+/* Glass clock. The tint is one scoped token (--clock-tint) so only the clock changes colour. */
+.glass-clock-theme {
+  --clock-glass-fill: color-mix(in oklch, var(--clock-tint) 42%, transparent);
+  --clock-glass-edge: color-mix(in oklch, var(--clock-tint) 70%, var(--clock-glass-highlight) 30%);
+  --clock-glass-shadow: color-mix(in oklch, var(--clock-tint) 45%, var(--background) 55%);
+}
+.glass-clock {
+  color: var(--clock-glass-fill);
+  -webkit-text-stroke: 1px var(--clock-glass-edge);
+  text-shadow: 0 1px 0 var(--clock-glass-highlight), 0 3px 2px var(--clock-glass-shadow), 0 8px 24px var(--clock-glass-shadow);
+  letter-spacing: 0;
+}
+.glass-clock-date { -webkit-text-stroke-width: 0.5px; }
+.glass-clock-line { background: var(--clock-glass-edge); box-shadow: 0 1px 8px var(--clock-glass-shadow); }
+
+.window-shadow { box-shadow: var(--surface-highlight), var(--shadow-window); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 640px) {
+  .window-shadow { left: 4px !important; top: 12px !important; width: calc(100% - 8px); }
+}
+.arcade-window { box-shadow: var(--surface-highlight), var(--shadow-window); }
+@media (max-width: 640px) {
+  .arcade-window { left: 4px !important; top: 12px !important; width: calc(100% - 8px); }
+}
+
+/* Starfield: twinkling dots, shooting stars and a slow zoom drift on the background image. */
+@keyframes lucid-twinkle { 0%, 100% { opacity: .15; } 50% { opacity: 1; } }
+@keyframes lucid-shoot {
+  0% { transform: translate(0, 0) rotate(-35deg); opacity: 0; }
+  5% { opacity: 1; }
+  20% { transform: translate(-60vw, 40vh) rotate(-35deg); opacity: 0; }
+  100% { opacity: 0; transform: translate(-60vw, 40vh) rotate(-35deg); }
+}
+@keyframes lucid-drift { from { transform: scale(1.05) translate(0, 0); } to { transform: scale(1.12) translate(-2%, -1%); } }
+.lucid-star { position: absolute; border-radius: 9999px; background: var(--foreground); box-shadow: 0 0 6px var(--foreground); animation: lucid-twinkle ease-in-out infinite; }
+.lucid-shooting { position: absolute; height: 2px; width: 140px; background: linear-gradient(90deg, var(--foreground), transparent); animation: lucid-shoot linear infinite; }
+.lucid-drift { animation: lucid-drift 40s ease-in-out infinite alternate; will-change: transform; }
+
+/* Long store lists: cards below the fold skip layout and painting until they are near. */
+.lucid-card { content-visibility: auto; contain-intrinsic-size: auto 150px; }
+
+/* PS5 layout: tiles and hero text, and the zoom-open for apps. */
+@keyframes ps5-open { from { opacity: 0; transform: scale(0.82); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes ps5-hero { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
+@keyframes aurora-rise { from { opacity: 0; translate: 0 6px; } to { opacity: 1; translate: 0 0; } }
+
+/* Tiles and cards lift on hover and press in on click. Uses the individual `translate` and `scale`
+   properties, so they combine with Tailwind's transform utilities instead of fighting them. */
+@layer components {
+  .lift { transition: translate 200ms cubic-bezier(.2, .8, .2, 1), scale 200ms cubic-bezier(.2, .8, .2, 1), box-shadow 200ms ease, background-color 200ms ease; }
+  .lift:hover { translate: 0 -2px; }
+  .press { transition: translate 200ms cubic-bezier(.2, .8, .2, 1), scale 200ms cubic-bezier(.2, .8, .2, 1), background-color 200ms ease, filter 200ms ease; }
+  .press:active { scale: 0.98; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ps5-open { animation: ps5-open 420ms cubic-bezier(.2, .8, .2, 1) both; transform-origin: 30% 15%; }
+  .ps5-hero { animation: ps5-hero 350ms ease-out both; }
+  .fade-in { animation: fadeIn 180ms ease-out both; }
+  .rise-in { animation: aurora-rise 220ms ease-out both; }
+}
+
+/* Window fade-in used by LUC1D layout windows (reduced-motion safe). */
+@media (prefers-reduced-motion: no-preference) {
+  .window-fade { animation: fadeIn 150ms ease-out; }
+}
+
+/* Boot intro: a spinning Chromebook-style logo for the "chrome" intro. Spins flat so it stays crisp. */
+@keyframes luc1d-spin-2d { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.luc1d-chrome { animation: luc1d-spin-2d 1.2s linear infinite; filter: drop-shadow(8px 8px 16px rgba(0,0,0,0.5)); }
+
+/* Scrollbars: thin, translucent, and they follow the foreground colour in every theme. */
+* { scrollbar-width: thin; scrollbar-color: color-mix(in oklab, var(--foreground) 28%, transparent) transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; background: transparent; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  border-radius: 999px; border: 2px solid transparent; background-clip: padding-box;
+  background-color: color-mix(in oklab, var(--foreground) 22%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in oklab, var(--foreground) 45%, transparent), inset 0 -1px 2px color-mix(in oklab, var(--background) 40%, transparent);
+}
+::-webkit-scrollbar-thumb:hover { background-color: color-mix(in oklab, var(--foreground) 38%, transparent); }
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* Settings detail pages: a grouped, rounded list with row dividers (iPhone-style). */
+.settings-group { background: var(--card); border: 1px solid var(--shell-glass-border); border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--surface-highlight), var(--shadow-card); }
+.settings-group > * + * { border-top: 1px solid var(--border); }
+
+/* Reduced motion: every animation and transition is off, including the tile and card lift. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .lift:hover, .press:active { translate: none; scale: none; }
+  .lucid-star, .lucid-shooting, .lucid-drift { animation: none; }
+  .ps5-open, .ps5-hero { animation: none; }
+}

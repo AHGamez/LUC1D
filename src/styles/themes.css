@@ -1,0 +1,86 @@
+/* Whole-site themes. The attribute lives on <html data-site-theme="...">.
+   Each theme sets a hue, a chroma and an accent; the base block turns them into tokens.
+   The 11 ids here must match SITE_THEMES in lib/themes.ts. */
+
+[data-site-theme] {
+  --theme-accent: oklch(0.82 0.12 170);
+  --theme-hue: 170;
+  --theme-chroma: 0;
+  --background: oklch(0.1 var(--theme-chroma) var(--theme-hue));
+  --foreground: oklch(0.97 0.004 var(--theme-hue));
+  --card: oklch(0.16 var(--theme-chroma) var(--theme-hue) / 96%);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.17 var(--theme-chroma) var(--theme-hue));
+  --popover-foreground: var(--foreground);
+  --primary: var(--theme-accent);
+  --primary-foreground: oklch(0.14 0.01 var(--theme-hue));
+  --secondary: oklch(0.21 var(--theme-chroma) var(--theme-hue));
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.22 var(--theme-chroma) var(--theme-hue));
+  --muted-foreground: oklch(0.7 0.012 var(--theme-hue));
+  --accent: oklch(0.27 var(--theme-chroma) var(--theme-hue));
+  --accent-foreground: var(--foreground);
+  --border: oklch(0.9 0.025 var(--theme-hue) / 14%);
+  --input: var(--border);
+  --ring: var(--primary);
+  --titlebar: oklch(0.19 var(--theme-chroma) var(--theme-hue));
+  --stem: oklch(0.12 var(--theme-chroma) var(--theme-hue));
+  --shell-glass: oklch(0.2 var(--theme-chroma) var(--theme-hue) / 44%);
+  --shell-glass-strong: oklch(0.22 var(--theme-chroma) var(--theme-hue) / 74%);
+  --shell-glass-border: oklch(1 0 0 / 18%);
+  --shell-tab: oklch(1 0 0 / 10%);
+  --shell-tab-hover: oklch(1 0 0 / 6%);
+}
+
+[data-site-theme="midnight"]  { --theme-hue: 280; --theme-chroma: 0.025; --theme-accent: oklch(0.8 0.12 285); }
+[data-site-theme="ocean"]     { --theme-hue: 220; --theme-chroma: 0.025; --theme-accent: oklch(0.82 0.12 210); }
+[data-site-theme="forest"]    { --theme-hue: 155; --theme-chroma: 0.025; --theme-accent: oklch(0.8 0.15 150); }
+[data-site-theme="rose"]      { --theme-hue: 10;  --theme-chroma: 0.025; --theme-accent: oklch(0.8 0.14 10); }
+[data-site-theme="cyberpunk"] { --theme-hue: 320; --theme-chroma: 0.03;  --theme-accent: oklch(0.9 0.19 115); }
+[data-site-theme="lavender"]  { --theme-hue: 305; --theme-chroma: 0.025; --theme-accent: oklch(0.82 0.12 305); }
+[data-site-theme="ember"]     { --theme-hue: 30;  --theme-chroma: 0.025; --theme-accent: oklch(0.8 0.16 40); }
+[data-site-theme="mono"]      { --theme-hue: 0;   --theme-chroma: 0;     --theme-accent: oklch(0.92 0 0); --app-chroma: 0.02; }
+[data-site-theme="mint"]      { --theme-hue: 170; --theme-chroma: 0.02;  --theme-accent: oklch(0.87 0.13 170); }
+
+/* Light is a full override: it does not use the dark base block's hue maths. */
+[data-site-theme="light"] {
+  --theme-accent: oklch(0.48 0.14 190);
+  --background: oklch(0.965 0.005 190);
+  --foreground: oklch(0.2 0.015 190);
+  --card: oklch(0.99 0.003 190 / 96%);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.985 0.004 190);
+  --popover-foreground: var(--foreground);
+  --primary: var(--theme-accent);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.92 0.01 190);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.93 0.008 190);
+  --muted-foreground: oklch(0.42 0.02 190);
+  --accent: oklch(0.89 0.015 190);
+  --accent-foreground: var(--foreground);
+  --border: oklch(0.3 0.015 190 / 16%);
+  --titlebar: oklch(0.94 0.008 190);
+  --stem: oklch(0.97 0.005 190);
+  --shell-glass: oklch(0.985 0.004 190 / 72%);
+  --shell-glass-strong: oklch(0.99 0.003 190 / 88%);
+  --shell-glass-border: oklch(0.3 0.015 190 / 16%);
+  --shell-glass-highlight: oklch(1 0 0 / 60%);
+  --shell-tab: oklch(0.2 0.015 190 / 8%);
+  --shell-tab-hover: oklch(0.2 0.015 190 / 5%);
+  --focus-ring-halo: oklch(1 0 0 / 80%);
+}
+
+/* A small dot in each theme's own accent. Put data-site-theme on a wrapper to show that theme's colour. */
+.theme-swatch-dot { background: var(--theme-accent); box-shadow: inset 0 0 0 1px oklch(1 0 0 / 20%); }
+
+.theme-choice {
+  background: var(--card);
+  color: var(--foreground);
+  border-color: var(--border);
+  border-radius: var(--radius-control);
+  box-shadow: var(--surface-highlight);
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+.theme-choice:hover { background: var(--accent); }
+.theme-choice[aria-pressed="true"] { outline: 2px solid var(--theme-accent); outline-offset: -2px; }

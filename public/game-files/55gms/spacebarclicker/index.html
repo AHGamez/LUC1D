@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head><script>(function(){function S(){var d={};return{getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}["localStorage","sessionStorage"].forEach(function(n){try{window[n].length}catch(e){try{Object.defineProperty(window,n,{value:S(),configurable:true})}catch(_){}}});try{indexedDB.open("_luc1d")}catch(e){try{Object.defineProperty(window,"indexedDB",{value:undefined,configurable:true})}catch(_){}}})();</script>
+  <script src="https://55gms.com/assets/js/save-agent.js?v=4"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/55gms/gms-ads@b995962daa60e71ea2ab3bdaf6e10f8c6853a7fe/embed/dist/sdk.min.js"
+    integrity="sha384-TshTwF2bDJgpoZFNenR6Wn1Ldh7BMyNG42LqxG2OTTuBEUk0+Nabn9pIPCWz5AIT"
+    crossorigin="anonymous"
+    data-game-id="spacebarclicker"
+    data-compat=""
+  ></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="monetization" content="$ilp.uphold.com/zDFj9FWE4m6e">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/55gms/assets@e6dafba78d77deea9bf03d88e4d94efec394ef58/misc/spacebarclicker/styles/style.css" media="screen">
+    <base href="https://cdn.jsdelivr.net/gh/55gms/assets@e6dafba78d77deea9bf03d88e4d94efec394ef58/misc/spacebarclicker/">
+    <title>SPACEBAR CLICKER</title>
+</head>
+
+<body>
+    <div id="game">
+        <div id="header">
+            <div id="counter"><span>0</span></div>
+            <div id="per_second">0</div>
+            <div class="sbc">
+                <div id="sb" class="sbs sb1">SPACEBAR</div>
+            </div>
+        </div>
+        <ul id="items">
+            <li id="it" class="item">
+                <span class="ilvl">%4</span>
+                <h1 class="ititle">%1</h1>
+                <span class="idesc">%2</span>
+                <div class="cost"><span class="spacebar"></span><span class="icost">%3</span></div>
+            </li>
+        </ul>
+    </div>
+    <div id="footer">a game by <a href="https://bruno.croci.me/">CrociDB</a> | <a
+            href="javascript:game.resetGameSure();">reset game</a></div>
+
+
+    <!-- Scripts -->
+    <script src="src/jsfxr.js"></script>
+    <script src="src/utils.js"></script>
+    <script src="src/data.js"></script>
+    <script src="src/particle.js"></script>
+    <script src="src/counter.js"></script>
+    <script src="src/game.js"></script>
+    <script src="src/main.js"></script>
+</body>
+
+</html>

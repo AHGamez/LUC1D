@@ -1,0 +1,44 @@
+{
+  "name": "luc1d-reborn",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:server": "tsx watch server/index.ts",
+    "build": "tsc --noEmit && vite build",
+    "start": "node --import tsx server/index.ts",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@block65/webcrypto-web-push": "^2.0.0",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "@react-three/rapier": "^2.2.0",
+    "@supabase/supabase-js": "^2.119.0",
+    "@types/three": "^0.187.0",
+    "fzstd": "^0.1.1",
+    "lucide-react": "^0.575.0",
+    "lz4js": "^0.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "stripe": "^22.0.2",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "@types/node": "^22.16.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "jsdom": "^26.1.0",
+    "playwright-core": "^1.65.0",
+    "tailwindcss": "^4.2.1",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.1.0",
+    "vitest": "^4.1.12"
+  }
+}

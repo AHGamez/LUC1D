@@ -1,0 +1,1 @@
+ALTER TABLE public.discard_announcements ADD COLUMN IF NOT EXISTS sitewide boolean NOT NULL DEFAULT false;

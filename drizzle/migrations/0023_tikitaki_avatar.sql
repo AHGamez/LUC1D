@@ -1,0 +1,2 @@
+ALTER TABLE public.tikitaki_profiles ADD COLUMN IF NOT EXISTS avatar_path text;
+COMMENT ON COLUMN public.tikitaki_profiles.avatar_path IS 'Private Storage path of the account picture in bucket tikitaki-videos, uploaded by the profile owner.';

@@ -1,0 +1,9 @@
+/* Clock typefaces for the glass layout (Sora is already loaded by index.html). Must stay first. */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Bebas+Neue&family=Playfair+Display:wght@500;800&family=JetBrains+Mono:wght@400;700&family=Pacifico&family=Press+Start+2P&family=Space+Grotesk:wght@300;600&display=swap");
+
+@import "tailwindcss" source(none);
+@source "../";
+
+@import "./tokens.css";
+@import "./themes.css";
+@import "./effects.css";

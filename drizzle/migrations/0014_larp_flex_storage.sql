@@ -1,0 +1,2 @@
+CREATE POLICY "larp read" ON storage.objects FOR SELECT TO authenticated USING (bucket_id = 'larp-flex');
+CREATE POLICY "larp upload own" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'larp-flex' AND (storage.foldername(name))[1] = auth.uid()::text);

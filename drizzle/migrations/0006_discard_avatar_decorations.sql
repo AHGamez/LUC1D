@@ -1,0 +1,1 @@
+ALTER TABLE public.discard_profiles ADD COLUMN avatar_decoration text NOT NULL DEFAULT 'none' CONSTRAINT discard_avatar_decoration_valid CHECK (avatar_decoration IN ('none', 'galaxy', 'aurora', 'stardust'));

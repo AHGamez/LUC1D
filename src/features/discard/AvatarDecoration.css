@@ -1,0 +1,45 @@
+/* Avatar decorations: a spinning SVG ring drawn over a profile picture. Self-contained so it can be copied as a unit. */
+
+.discard-decoration {
+  --decoration-main: oklch(0.75 0.19 305);
+  --decoration-secondary: oklch(0.83 0.12 220);
+  --decoration-sparkle: oklch(0.98 0.02 280);
+  position: absolute;
+  inset: -17%;
+  width: 134%;
+  height: 134%;
+  pointer-events: none;
+  overflow: visible;
+}
+.discard-decoration--aurora { --decoration-main: oklch(0.85 0.17 155); --decoration-secondary: oklch(0.8 0.14 210); }
+.discard-decoration--stardust { --decoration-main: oklch(0.87 0.15 85); --decoration-secondary: oklch(0.8 0.16 25); }
+.discard-decoration--aurora .discard-decoration-orbit { animation-duration: 20s; animation-direction: reverse; }
+.discard-decoration--stardust .discard-decoration-sparkles { animation-duration: 2s; }
+.discard-decoration--ring-nebula { --decoration-main: oklch(0.72 0.2 320); --decoration-secondary: oklch(0.7 0.17 260); }
+.discard-decoration--ring-inferno { --decoration-main: oklch(0.7 0.22 35); --decoration-secondary: oklch(0.85 0.17 80); }
+.discard-decoration--ring-inferno .discard-decoration-orbit { animation-duration: 5s; }
+.discard-decoration--ring-rainbow { --decoration-main: oklch(0.8 0.18 150); --decoration-secondary: oklch(0.75 0.2 20); }
+.discard-decoration--ring-rainbow .discard-decoration-orbit { animation: discard-orbit 8s linear infinite, discard-hue 4s linear infinite; }
+.discard-decoration--ring-royal { --decoration-main: oklch(0.85 0.16 88); --decoration-secondary: oklch(0.6 0.2 300); }
+.discard-decoration--ring-royal .discard-decoration-trail { stroke-width: 4.5; }
+.discard-decoration--ring-frost { --decoration-main: oklch(0.88 0.1 220); --decoration-secondary: oklch(0.97 0.03 220); }
+.discard-decoration--ring-toxic { --decoration-main: oklch(0.85 0.25 140); --decoration-secondary: oklch(0.7 0.2 110); }
+.discard-decoration--ring-legend { --decoration-main: oklch(0.8 0.2 40); --decoration-secondary: oklch(0.85 0.17 88); }
+.discard-decoration--ring-legend .discard-decoration-trail { stroke-width: 5; }
+.fall-ring-leaf { fill: oklch(0.7 0.17 50); stroke: oklch(0.78 0.14 85); stroke-width: 1; }
+.fall-ring-leaf:nth-child(even) { fill: oklch(0.78 0.14 85); }
+.fall-turkey-head { fill: oklch(0.43 0.09 45); }
+
+.discard-decoration-orbit { transform-origin: 50% 50%; animation: discard-orbit 14s linear infinite; }
+.discard-decoration-halo { stroke: var(--decoration-main); stroke-width: 3; opacity: 0.25; }
+.discard-decoration-trail { stroke: var(--decoration-main); stroke-width: 3; stroke-linecap: round; filter: drop-shadow(0 0 2px var(--decoration-main)); }
+.discard-decoration-secondary { stroke: var(--decoration-secondary); stroke-width: 2; stroke-linecap: round; }
+.discard-decoration-sparkles { fill: var(--decoration-sparkle); filter: drop-shadow(0 0 2px var(--decoration-main)); animation: discard-sparkle 3s ease-in-out infinite; transform-origin: center; }
+
+@keyframes discard-hue { to { filter: hue-rotate(360deg); } }
+@keyframes discard-orbit { to { transform: rotate(360deg); } }
+@keyframes discard-sparkle { 0%, 100% { opacity: 0.4; transform: scale(0.94); } 50% { opacity: 1; transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .discard-decoration-orbit, .discard-decoration-sparkles, .discard-decoration--ring-rainbow .discard-decoration-orbit { animation: none; }
+}
